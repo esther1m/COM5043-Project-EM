@@ -1,3 +1,4 @@
+package main;
 public class Product {
     //class Product, initalising the variables
     private int productId;

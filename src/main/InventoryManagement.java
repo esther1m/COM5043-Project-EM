@@ -1,3 +1,4 @@
+package main;
 //class that handles the inventory management
 import java.util.HashMap;
 
