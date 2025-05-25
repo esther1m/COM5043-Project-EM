@@ -10,15 +10,20 @@ public class InventoryManagement{
     }
 
     //adding products to the hashmap
-    private void addProducts(Product product){
+    private void addProduct(Product product){
         int id = product.getProductId();
         productsInventory.put(id,product);
     }
 
     //removing products from the hashmap
-    private void removeProducts(Product product){
+    private void removeProduct(Product product){
         int id =product.getProductId();
         productsInventory.remove(id);
+    }
+
+    //allowing to search/return/get product from inventory by id:
+    private Product getProductbyId(int id){
+        return productsInventory.get(id);
     }
     
 }
