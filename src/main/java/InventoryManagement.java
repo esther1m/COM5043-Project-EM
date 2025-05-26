@@ -10,9 +10,10 @@ public class InventoryManagement{
     }
 
     //adding products to the hashmap
-    public void addProduct(Product product){
+    public boolean addProduct(Product product){
         int id = product.getProductId();
         productsInventory.put(id,product);
+        return true;
     }
 
     //removing products from the hashmap
