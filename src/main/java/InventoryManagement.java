@@ -16,8 +16,8 @@ public class InventoryManagement{
     }
 
     //removing products from the hashmap
-    private void removeProduct(Product product){
-        int id =product.getProductId();
+    public void removeProduct(Product product){
+        int id = product.getProductId();
         productsInventory.remove(id);
     }
 
