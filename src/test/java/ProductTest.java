@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 public class ProductTest {
     
     Product test_product1;
+    int test_product1_checkQuantity;
     
     @BeforeEach
     void setup(){
@@ -18,7 +19,7 @@ public class ProductTest {
         int test_product1_checkid = test_product1.getProductId();
         String test_product1_checkname = test_product1.getProductName();
         double test_product1_checkprice = test_product1.getProductPrice();
-        int test_product1_checkQuantity = test_product1.getProductQuantity();
+        test_product1_checkQuantity = test_product1.getProductQuantity();
 
         assertEquals(test_product1_checkid, 0);
         assertEquals(test_product1_checkname, "Test");
@@ -30,7 +31,7 @@ public class ProductTest {
     @Test
     void testAddStock(){
         test_product1.addStock(50);
-        int test_product1_checkQuantity = test_product1.getProductQuantity();
+        test_product1_checkQuantity = test_product1.getProductQuantity();
 
         assertEquals(test_product1_checkQuantity, 200);
     }
@@ -39,10 +40,17 @@ public class ProductTest {
     @Test
     void testAddNegativeStock(){
         test_product1.addStock(-50);
-        int test_product1_checkQuantity = test_product1.getProductQuantity();
+        test_product1_checkQuantity = test_product1.getProductQuantity();
 
         assertEquals(test_product1_checkQuantity, 150);
     }
 
+    //testing if the system properly removes stock by checking unchanging quantity
+    @Test
+    void testRemoveStock(){
+        test_product1.removeStock(50);
+        test_product1_checkQuantity = test_product1.getProductQuantity();
 
+        assertEquals(test_product1_checkQuantity, 100);
+    }
 }
