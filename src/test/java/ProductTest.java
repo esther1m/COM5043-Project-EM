@@ -10,7 +10,6 @@ public class ProductTest {
     @BeforeEach
     void setup(){
         test_product1 = new Product(0, "Test", 5.70, 150);
-
     }
 
     //checking the object initalises as it should by checking each field is correct
@@ -45,12 +44,21 @@ public class ProductTest {
         assertEquals(test_product1_checkQuantity, 150);
     }
 
-    //testing if the system properly removes stock by checking unchanging quantity
+    //testing if the system properly removes stock by checking decreasing quantity
     @Test
     void testRemoveStock(){
         test_product1.removeStock(50);
         test_product1_checkQuantity = test_product1.getProductQuantity();
 
         assertEquals(test_product1_checkQuantity, 100);
+    }
+
+    //checking if the system refuses to remove negative stock by checking unchanging quantity
+    @Test
+    void testRemoveNegativeStock(){
+        test_product1.removeStock(-50);
+        test_product1_checkQuantity = test_product1.getProductQuantity();
+
+        assertEquals(test_product1_checkQuantity, 150);
     }
 }
