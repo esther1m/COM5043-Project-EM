@@ -14,7 +14,7 @@ public class InventoryManagementTest {
         test_inventory = new InventoryManagement();
         test_product0 = new Product(0, "test", 3.00, 50);
         test_product1 = new Product(1, "Second test", 6.00, 40);
-        test_product2 = new Product(2, "Third product", 30.00, 0)
+        test_product2 = new Product(2, "Third product", 30.00, 0);
 
         test_inventory.addProduct(test_product1);
     }
@@ -56,7 +56,7 @@ public class InventoryManagementTest {
     @Test
     void testRemovalNonexistentProduct(){
         test_inventory.removeProduct(test_product2);
-        assertNull(test_inventory.getProductById(1), "Nonexistent product removal should have no effect");
+        assertNull(test_inventory.getProductById(2), "Nonexistent product removal should have no effect");
     }
 
     //testing the system returns null for nonexistent id by checking for null value
