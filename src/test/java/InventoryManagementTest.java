@@ -13,6 +13,8 @@ public class InventoryManagementTest {
         test_inventory = new InventoryManagement();
         test_product0 = new Product(0, "test", 3.00, 50);
         test_product1 = new Product(1, "Second test", 6.00, 40);
+
+        test_inventory.addProduct(test_product1);
     }
 
     //testing that the addProduct function works as expected by checking the id and name against the hashmap
@@ -28,8 +30,6 @@ public class InventoryManagementTest {
     // testing getproductbyid works by assert equals (should be the same product)
     @Test
     void testGetProductById(){
-        test_inventory.addProduct(test_product1);
-        
         Product checktestproductbyid = test_inventory.getProductById(1);
         assertEquals(checktestproductbyid, test_product1);
     }
@@ -37,8 +37,8 @@ public class InventoryManagementTest {
     //testing that the removeProduct function works as expected by checking the id against the hashmap
     @Test
     void testRemoveProduct(){
-        test_inventory.removeProduct(test_product0);
-        Product checktestproduct = test_inventory.getProductById(0);
+        test_inventory.removeProduct(test_product1);
+        Product checktestproduct = test_inventory.getProductById(1);
         assertNull(checktestproduct, "Product should be remove with no errors");
     }
 }
