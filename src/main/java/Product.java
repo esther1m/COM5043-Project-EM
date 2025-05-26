@@ -32,14 +32,14 @@ public class Product {
     }
 
     //adding stock to product
-    private void addStock(int amount){
+    public void addStock(int amount){
         if (amount > 0){
             productQuantity = productQuantity + amount;
         }
     }
 
     //removing stock from product
-    private void removeStock(int amount){
+    public void removeStock(int amount){
         if (amount > 0) {
             productQuantity = productQuantity - amount;
             if (productQuantity == 0){
