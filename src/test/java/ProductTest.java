@@ -35,6 +35,7 @@ public class ProductTest {
         assertEquals(test_product1_checkQuantity, 200);
     }
 
+    //checking if the system refuses to add negative stock by checking the unchanging quantity
     @Test
     void testAddNegativeStock(){
         test_product1.addStock(-50);
@@ -42,5 +43,6 @@ public class ProductTest {
 
         assertEquals(test_product1_checkQuantity, 150);
     }
+
 
 }
