@@ -61,4 +61,14 @@ public class ProductTest {
 
         assertEquals(test_product1_checkQuantity, 150);
     }
+
+    //testing if the system will remove more stock than available
+    @Test
+    void testRemoveTooMuchStock(){
+        test_product1.removeStock(160);
+        test_product1_checkQuantity = test_product1.getProductQuantity();
+
+        assertEquals(test_product1_checkQuantity, 150);
+
+    }
 }
