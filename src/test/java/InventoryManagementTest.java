@@ -1,14 +1,21 @@
-
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
 
+//setting up variables for all tests
 public class InventoryManagementTest {
-    //testing that the addProduct function works as expected
-    InventoryManagement test_inventory = new InventoryManagement();
-    Product test_product0 = new Product(0, "test", 3.00, 50);
-    Product test_product1 = new Product(1, "Second test", 6.00, 40);
-    
+    InventoryManagement test_inventory;
+    Product test_product0;
+    Product test_product1;
+  
+    @BeforeEach
+    void setup(){
+        test_inventory = new InventoryManagement();
+        test_product0 = new Product(0, "test", 3.00, 50);
+        test_product1 = new Product(1, "Second test", 6.00, 40);
+    }
 
+    //testing that the addProduct function works as expected by checking the id and name against the hashmap
     @Test
     void testAddProduct(){
         test_inventory.addProduct(test_product0);
@@ -18,6 +25,7 @@ public class InventoryManagementTest {
         assertEquals("test", test_product0.getProductName());
     }
 
+    //testing that the removeProduct function works as expected by checking the id against the hashmap
     @Test
     void testRemoveProduct(){
         test_inventory.removeProduct(test_product0);
