@@ -35,4 +35,12 @@ public class ProductTest {
         assertEquals(test_product1_checkQuantity, 200);
     }
 
+    @Test
+    void testAddNegativeStock(){
+        test_product1.addStock(-50);
+        int test_product1_checkQuantity = test_product1.getProductQuantity();
+
+        assertEquals(test_product1_checkQuantity, 150);
+    }
+
 }
