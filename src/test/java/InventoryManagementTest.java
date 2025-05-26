@@ -46,8 +46,8 @@ public class InventoryManagementTest {
     //testing the system won't add a product that already exists
     @Test
     void testNoDuplicateProduct(){
-        test_inventory.addProduct(test_product0);
-        boolean result = test_inventory.addProduct(test_product0);
+        test_inventory.addProduct(test_product1);
+        boolean result = test_inventory.addProduct(test_product1);
         assertFalse (result, "Inventory should reject adding duplicate products.");
     }
 
