@@ -9,9 +9,12 @@ public class InventoryManagement{
         productsInventory = new HashMap<>();
     }
 
-    //adding products to the hashmap
+    //adding products to the hashmap, only if not already existing
     public boolean addProduct(Product product){
         int id = product.getProductId();
+        if (productsInventory.containsKey(id)){
+            return false;
+        }
         productsInventory.put(id,product);
         return true;
     }
