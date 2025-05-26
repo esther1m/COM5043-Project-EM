@@ -23,11 +23,11 @@ public class Product {
         return productName;
     }
 
-    private double getProductPrice(){
+    public double getProductPrice(){
         return productPrice;
     }
 
-    private int getProductQuantity(){
+    public int getProductQuantity(){
         return productQuantity;
     }
 
