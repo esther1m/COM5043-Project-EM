@@ -25,6 +25,15 @@ public class InventoryManagementTest {
         assertEquals("test", test_product0.getProductName());
     }
 
+    // testing getproductbyid works by assert equals (should be the same product)
+    @Test
+    void testGetProductById(){
+        test_inventory.addProduct(test_product1);
+        
+        Product checktestproductbyid = test_inventory.getProductById(1);
+        assertEquals(checktestproductbyid, test_product1);
+    }
+
     //testing that the removeProduct function works as expected by checking the id against the hashmap
     @Test
     void testRemoveProduct(){
