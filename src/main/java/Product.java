@@ -1,13 +1,13 @@
-package main;
+
 public class Product {
     //class Product, initalising the variables
     private int productId;
     private String productName;
-    private float productPrice;
+    private double productPrice;
     private int productQuantity;
 
     //the constructor method for class Product
-    private Product (int productId, String productName, float productPrice, int productQuantity) {
+    public Product (int productId, String productName, double productPrice, int productQuantity) {
         this.productId = productId;
         this.productName = productName;
         this.productPrice = productPrice;
@@ -19,11 +19,11 @@ public class Product {
         return productId;
     }
 
-    private String getProductName(){
+    public String getProductName(){
         return productName;
     }
 
-    private float getProductPrice(){
+    private double getProductPrice(){
         return productPrice;
     }
 
