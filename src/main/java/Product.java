@@ -40,7 +40,7 @@ public class Product {
 
     //removing stock from product
     public void removeStock(int amount){
-        if (amount > 0) {
+        if (amount > 0 && productQuantity >= amount) {
             productQuantity = productQuantity - amount;
             if (productQuantity == 0){
                 //place a new order from supplier to restock
