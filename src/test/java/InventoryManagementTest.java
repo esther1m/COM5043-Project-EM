@@ -7,12 +7,14 @@ public class InventoryManagementTest {
     InventoryManagement test_inventory;
     Product test_product0;
     Product test_product1;
+    Product test_product2;
   
     @BeforeEach
     void setup(){
         test_inventory = new InventoryManagement();
         test_product0 = new Product(0, "test", 3.00, 50);
         test_product1 = new Product(1, "Second test", 6.00, 40);
+        test_product2 = new Product(2, "Third product", 30.00, 0)
 
         test_inventory.addProduct(test_product1);
     }
@@ -43,22 +45,21 @@ public class InventoryManagementTest {
         assertNull(checktestproduct, "Product should be remove with no errors");
     }
 
-    //testing the system won't add a product that already exists
+    //testing the system won't add a product that already exists due to boolean addProduct method
     @Test
     void testNoDuplicateProduct(){
-        test_inventory.addProduct(test_product1);
         boolean result = test_inventory.addProduct(test_product1);
         assertFalse (result, "Inventory should reject adding duplicate products.");
     }
 
-    //testing the system won't remove a nonexisting product
+    //testing the system won't remove a nonexisting product by checking for null value
     @Test
     void testRemovalNonexistentProduct(){
-        test_inventory.removeProduct(test_product1);
+        test_inventory.removeProduct(test_product2);
         assertNull(test_inventory.getProductById(1), "Nonexistent product removal should have no effect");
     }
 
-    //testing the system returns null for nonexistent id
+    //testing the system returns null for nonexistent id by checking for null value
     @Test
     void testNonexistentId(){
         Product checktestproductbyid = test_inventory.getProductById(4);
