@@ -4,12 +4,12 @@ public class Supplier {
     //class Supplier, initalising the variables
     private int supplierId;
     private String supplierName;
-    private int supplierPhoneNumber;
+    private float supplierPhoneNumber;
     private String supplierEmail;
     private ArrayList <Product> supplierOrderHistory;
 
     //the constructor method for class Product
-    public Supplier(int supplierId, String supplierName, int supplierPhoneNumber, String supplierEmail){
+    public Supplier(int supplierId, String supplierName, float supplierPhoneNumber, String supplierEmail){
         this.supplierId = supplierId;
         this.supplierName = supplierName;
         this.supplierPhoneNumber = supplierPhoneNumber;
@@ -26,7 +26,7 @@ public class Supplier {
         return supplierName;
     }
 
-    public int getSupplierPhoneNumber(){
+    public float getSupplierPhoneNumber(){
         return supplierPhoneNumber;
     }
 
