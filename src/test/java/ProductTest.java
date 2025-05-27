@@ -20,10 +20,10 @@ public class ProductTest {
         double test_product1_checkprice = test_product1.getProductPrice();
         test_product1_checkQuantity = test_product1.getProductQuantity();
 
-        assertEquals(test_product1_checkid, 0);
-        assertEquals(test_product1_checkname, "Test");
-        assertEquals(test_product1_checkprice, 5.70);
-        assertEquals(test_product1_checkQuantity, 150);
+        assertEquals(0, test_product1_checkid);
+        assertEquals("Test", test_product1_checkname);
+        assertEquals(5.70, test_product1_checkprice);
+        assertEquals(150, test_product1_checkQuantity);
     }
 
     //checking if addStock increases the quantity by asserting equals
@@ -32,7 +32,7 @@ public class ProductTest {
         test_product1.addStock(50);
         test_product1_checkQuantity = test_product1.getProductQuantity();
 
-        assertEquals(test_product1_checkQuantity, 200);
+        assertEquals(200, test_product1_checkQuantity);
     }
 
     //checking if the system refuses to add negative stock by checking the unchanging quantity
@@ -41,7 +41,7 @@ public class ProductTest {
         test_product1.addStock(-50);
         test_product1_checkQuantity = test_product1.getProductQuantity();
 
-        assertEquals(test_product1_checkQuantity, 150);
+        assertEquals(150, test_product1_checkQuantity);
     }
 
     //testing if the system properly removes stock by checking decreasing quantity
@@ -50,7 +50,7 @@ public class ProductTest {
         test_product1.removeStock(50);
         test_product1_checkQuantity = test_product1.getProductQuantity();
 
-        assertEquals(test_product1_checkQuantity, 100);
+        assertEquals(100, test_product1_checkQuantity);
     }
 
     //checking if the system refuses to remove negative stock by checking unchanging quantity
@@ -59,7 +59,7 @@ public class ProductTest {
         test_product1.removeStock(-50);
         test_product1_checkQuantity = test_product1.getProductQuantity();
 
-        assertEquals(test_product1_checkQuantity, 150);
+        assertEquals(150, test_product1_checkQuantity);
     }
 
     //testing if the system will remove more stock than available
@@ -68,7 +68,7 @@ public class ProductTest {
         test_product1.removeStock(160);
         test_product1_checkQuantity = test_product1.getProductQuantity();
 
-        assertEquals(test_product1_checkQuantity, 150);
+        assertEquals(150, test_product1_checkQuantity);
 
     }
 }
