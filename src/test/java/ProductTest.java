@@ -35,15 +35,6 @@ public class ProductTest {
         assertEquals(200, test_product1_checkQuantity);
     }
 
-    //checking if the system refuses to add negative stock by checking the unchanging quantity
-    @Test
-    void testAddNegativeStock(){
-        test_product1.addStock(-50);
-        test_product1_checkQuantity = test_product1.getProductQuantity();
-
-        assertEquals(150, test_product1_checkQuantity);
-    }
-
     //testing if the system properly removes stock by checking decreasing quantity
     @Test
     void testRemoveStock(){
@@ -53,12 +44,15 @@ public class ProductTest {
         assertEquals(100, test_product1_checkQuantity);
     }
 
-    //checking if the system refuses to remove negative stock by checking unchanging quantity
+    //checking if the system refuses to add and remove negative stock by checking unchanging quantity
     @Test
-    void testRemoveNegativeStock(){
+    void testNegativeStock(){
+        test_product1.addStock(-50);
+        test_product1_checkQuantity = test_product1.getProductQuantity();
+        assertEquals(150, test_product1_checkQuantity);
+
         test_product1.removeStock(-50);
         test_product1_checkQuantity = test_product1.getProductQuantity();
-
         assertEquals(150, test_product1_checkQuantity);
     }
 
@@ -69,7 +63,6 @@ public class ProductTest {
         test_product1_checkQuantity = test_product1.getProductQuantity();
 
         assertEquals(150, test_product1_checkQuantity);
-
     }
 
     //testing if the system will remove stock when quantity is 0, by checking quantity remains 0
