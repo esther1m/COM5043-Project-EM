@@ -18,7 +18,7 @@ public class SupplierTest {
 
     //checking the object initalises as it should by checking each field is correct
     @Test
-    void testCreateProduct(){
+    void testCreateSupplier(){
         int test_supplier_checkid = test_supplier.getSupplierId();
         String test_supplier_checkname = test_supplier.getSupplierName();
         float test_supplier_checkphone = test_supplier.getSupplierPhoneNumber();
