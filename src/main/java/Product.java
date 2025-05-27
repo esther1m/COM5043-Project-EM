@@ -23,24 +23,24 @@ public class Product {
         return productName;
     }
 
-    private double getProductPrice(){
+    public double getProductPrice(){
         return productPrice;
     }
 
-    private int getProductQuantity(){
+    public int getProductQuantity(){
         return productQuantity;
     }
 
     //adding stock to product
-    private void addStock(int amount){
+    public void addStock(int amount){
         if (amount > 0){
             productQuantity = productQuantity + amount;
         }
     }
 
     //removing stock from product
-    private void removeStock(int amount){
-        if (amount > 0) {
+    public void removeStock(int amount){
+        if (amount > 0 && productQuantity >= amount) {
             productQuantity = productQuantity - amount;
             if (productQuantity == 0){
                 //place a new order from supplier to restock
