@@ -71,4 +71,14 @@ public class ProductTest {
         assertEquals(150, test_product1_checkQuantity);
 
     }
+
+    //testing if the system will remove stock when quantity is 0
+    @Test
+    void testRemoveZeroStock(){
+        test_product1.removeStock(150);
+        test_product1.removeStock(10);
+        test_product1_checkQuantity = test_product1.getProductQuantity();
+
+        assertEquals(150, test_product1_checkQuantity);
+    }
 }
