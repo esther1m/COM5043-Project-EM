@@ -38,6 +38,15 @@ public class Supplier {
         return supplierOrderHistory;
     }
 
+    //setter methods if the user wants to update the supplier details
+    public void setSupplierPhoneNumber(int phoneNumber){
+        supplierPhoneNumber = phoneNumber;
+    }
+
+    public void setSupplierEmail(String email){
+        supplierEmail = email;
+    }
+
     //method to add a product to order history
     public void addOrderHistory(Product product){
         supplierOrderHistory.add(product);
