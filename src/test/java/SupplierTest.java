@@ -51,4 +51,5 @@ public class SupplierTest {
         ArrayList<Product> history = test_supplier.getSupplierOrderHistory();
 
         assertEquals(test_product4, history.get(0));
+    }
 }
