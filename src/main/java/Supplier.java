@@ -39,7 +39,7 @@ public class Supplier {
     }
 
     //setter methods if the user wants to update the supplier details
-    public void setSupplierPhoneNumber(int phoneNumber){
+    public void setSupplierPhoneNumber(float phoneNumber){
         supplierPhoneNumber = phoneNumber;
     }
 

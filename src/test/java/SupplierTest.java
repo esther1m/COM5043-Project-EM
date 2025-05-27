@@ -9,11 +9,14 @@ import java.util.ArrayList;
 public class SupplierTest {
     
     Supplier test_supplier;
+    Product test_product4;
     //int test_product1_checkQuantity;
     
     @BeforeEach
     void setup(){
         test_supplier = new Supplier(0, "Test", 09876543210f, "test@email.com");
+        test_product4 = new Product(0, "Test", 5.70, 150);
+        
     }
 
     //checking the object initalises as it should by checking each field is correct
@@ -30,4 +33,22 @@ public class SupplierTest {
         assertEquals(09876543210f, test_supplier_checkphone);
         assertTrue(test_supplier_checklist.isEmpty());
     }
+
+    //checking the setter methods work
+    @Test
+    void testSetters(){
+        test_supplier.setSupplierPhoneNumber(12345678900f);
+        test_supplier.setSupplierEmail("testee@emails.com");
+
+        assertEquals(12345678900f, test_supplier.getSupplierPhoneNumber());
+        assertEquals("testee@emails.com", test_supplier.getSupplierEmail());
+    }
+
+    //checking the product to order history adder
+    @Test
+    void testAddProduct(){
+        test_supplier.addOrderHistory(test_product4);
+        ArrayList<Product> history = test_supplier.getSupplierOrderHistory();
+
+        assertEquals(test_product4, history.get(0));
 }
