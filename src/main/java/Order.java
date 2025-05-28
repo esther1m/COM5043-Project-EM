@@ -31,4 +31,15 @@ public class Order {
         status = "Order complete";
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public double getTotalCost(){
+        return totalCost;
+    }
+
+    public String getStatus(){{
+        return status;
+    }}
 }
