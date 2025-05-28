@@ -20,7 +20,7 @@ public class Order {
     public void addProductsToOrder(Product product, int customerOrderQuantity){
         int product_id = product.getProductId();
 
-        if (product.getProductQuantity() > customerOrderQuantity){
+        if (product.getProductQuantity() >= customerOrderQuantity){
             product.removeStock(customerOrderQuantity);
             productOrders.put(product_id, customerOrderQuantity);
             status = "Pending";
@@ -28,6 +28,7 @@ public class Order {
         } else {
             status = "Failed to place order due to stock issues";
         }
+        status = "Order complete";
     }
 
 }
