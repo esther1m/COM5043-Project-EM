@@ -91,6 +91,9 @@ public class App {
                     System.out.println("Exiting... returning to the main menu");
                     check = false;
                     break;
+                default:
+                    System.out.println("Invalid input. Try again.");
+                break;
 
             }
             
@@ -115,11 +118,12 @@ public class App {
                     break;
             //place an order
                 case "3":
-                
-                //orderProcessing.placeOrder(0, 0, null);
+                    orderProcessing.placeOrder(0, 0, null);
+                    break;
 
             //view suppliers
                 case "4":
+                    break;
             //exit
                 case "5":
                     System.out.println("Exiting the system...");
