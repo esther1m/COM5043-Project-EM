@@ -9,9 +9,9 @@ public class App {
     InventoryManagement inventoryManagement = new InventoryManagement();
 
     public void menu(){
-        user_input = null;
+        //user_input = null;
 
-        while (user_input == null) {
+        //while (user_input == null) {
             System.out.println("Welcome to the Warehouse Management System.");
             System.out.println("Please select an option:");
             System.out.println("1. View Order History");
@@ -23,9 +23,9 @@ public class App {
             //System.out.println("6. View Financial Report");
             System.out.println("7. Exit");
             System.out.println("Enter your choice: ");
-            user_input = scanner.nextLine();
+            //user_input = scanner.nextLine();
 
-            if (user_input == "1"){
+           /*  if (user_input == "1"){
                 orderProcessing.getOrders();
             } if (user_input == "2"){
                 inventoryManagement.getProducts();
@@ -41,8 +41,40 @@ public class App {
                     System.out.println("What's the quantity of " + user_add);
                 }
                 orderProcessing.placeOrder(0, user_id, null);
+            }*/
+        //}
+    }
+
+    public void runSystem(){
+        boolean active = true;
+        while (active) {
+            menu();
+            user_input = scanner.nextLine();
+
+            switch (user_input) {
+            //view order history
+                case "1":
+                    
+                    break;
+            //view products
+                case "2":
+            //place an order
+                case "3":
+            //view suppliers
+                case "4":
+            //exit
+                case "5":
+                    System.out.println("Exiting the system...");
+                    System.out.println("Have a good day :)");
+                    active = false;
+                    break;
+                default:
+                    System.out.println("Invalid input. Try again.");
+                    break;
             }
         }
+       
+
     }
 
 
