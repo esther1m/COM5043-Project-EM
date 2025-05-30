@@ -62,13 +62,13 @@ public class App {
 
             switch (user_input){
                 case "1":
-                    String user_product_name = scanner.nextLine();
                     System.out.println("What's the product called?");
-                    double user_product_price = scanner.nextDouble();
+                    String user_product_name = scanner.nextLine();
                     System.out.println("What's the product's price?");
-                    int user_product_quantity = scanner.nextInt();
+                    double user_product_price = scanner.nextDouble();
                     System.out.println("What quantity do we currently have of the product in stock?");
-
+                    int user_product_quantity = scanner.nextInt();
+                    
                     Product product = new Product(0, user_product_name, user_product_price, user_product_quantity);
                     inventoryManagement.addProduct(product);
                     break;
@@ -112,9 +112,12 @@ public class App {
                 case "2":
                     System.out.println(inventoryManagement.getProducts());
                     productsSwitch();
+                    break;
             //place an order
                 case "3":
-                orderProcessing.placeOrder(0, 0, null);
+                
+                //orderProcessing.placeOrder(0, 0, null);
+
             //view suppliers
                 case "4":
             //exit
