@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
@@ -68,7 +69,8 @@ public class App {
                     double user_product_price = scanner.nextDouble();
                     System.out.println("What quantity do we currently have of the product in stock?");
                     int user_product_quantity = scanner.nextInt();
-                    
+                    scanner.nextLine();
+
                     Product product = new Product(0, user_product_name, user_product_price, user_product_quantity);
                     inventoryManagement.addProduct(product);
                     break;
@@ -93,7 +95,7 @@ public class App {
                     break;
                 default:
                     System.out.println("Invalid input. Try again.");
-                break;
+                    break;
 
             }
             
@@ -113,7 +115,12 @@ public class App {
                     break;
             //view products
                 case "2":
-                    System.out.println(inventoryManagement.getProducts());
+                    System.out.println();
+                    //System.out.println("ID |   Name    | Price | Quantity");
+                    for (int productId : inventoryManagement.productsInventory.keySet()) {
+                        Product product = inventoryManagement.getProductById(productId);
+                        System.out.println("ID: " + productId + " | Name: "  + product.getProductName() + " | Price £" + product.getProductPrice() + " | Quantity: " + product.getProductQuantity());
+                    }
                     productsSwitch();
                     break;
             //place an order
