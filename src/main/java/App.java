@@ -45,6 +45,58 @@ public class App {
         //}
     }
 
+    public void productsMenu(){
+        System.out.println("Please select an option:");
+        System.out.println("1. Add Products");
+        System.out.println("2. Update Product quantity");
+        System.out.println("3. Delete Product");
+        System.out.println("4. Exit");
+    }
+
+    public void productsSwitch(){
+        boolean check = true;
+
+        while (check){
+            productsMenu();
+            user_input = scanner.nextLine();
+
+            switch (user_input){
+                case "1":
+                    String user_product_name = scanner.nextLine();
+                    System.out.println("What's the product called?");
+                    double user_product_price = scanner.nextDouble();
+                    System.out.println("What's the product's price?");
+                    int user_product_quantity = scanner.nextInt();
+                    System.out.println("What quantity do we currently have of the product in stock?");
+
+                    Product product = new Product(0, user_product_name, user_product_price, user_product_quantity);
+                    inventoryManagement.addProduct(product);
+                    break;
+                case "2":
+                    int user_input_productid = scanner.nextInt();
+                    System.out.println("What's the product id of the product you want to update the quantity for? ");
+                    Product changing_product = inventoryManagement.getProductById(user_input_productid);
+
+                    int user_input_quantity = scanner.nextInt();
+                    System.out.println("What's the new quantity? ");
+                    changing_product.setProductQuantity(user_input_quantity);
+                    break;
+                case "3":
+                    int user_input_productid2 = scanner.nextInt();
+                    System.out.println("What's the product id of the product you want to delete? ");
+                    Product removing_product = inventoryManagement.getProductById(user_input_productid2);
+                    inventoryManagement.removeProduct(removing_product);
+                    break;
+                case "4":
+                    System.out.println("Exiting... returning to the main menu");
+                    check = false;
+                    break;
+
+            }
+            
+        }
+    }
+
     public void runSystem(){
         boolean active = true;
         while (active) {
@@ -54,12 +106,15 @@ public class App {
             switch (user_input) {
             //view order history
                 case "1":
-                    
+                    System.out.println(orderProcessing.getOrders());
                     break;
             //view products
                 case "2":
+                    System.out.println(inventoryManagement.getProducts());
+                    productsSwitch();
             //place an order
                 case "3":
+                orderProcessing.placeOrder(0, 0, null);
             //view suppliers
                 case "4":
             //exit
@@ -82,8 +137,8 @@ public class App {
 
 
     public static void main(String[] args) throws Exception {
-
-        
+        App app = new App();
+        app.runSystem();
 
     }
 }
