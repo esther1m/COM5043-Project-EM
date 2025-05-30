@@ -29,6 +29,10 @@ public class InventoryManagement{
     public Product getProductById(int id){
         return productsInventory.get(id);
     }
+
+    public HashMap <Integer, Product> getProducts(){
+        return productsInventory;
+    }
     
 }
 
