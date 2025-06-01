@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Supplier {
     //class Supplier, initalising the variables
-    private static int nextSupplierId = -1;
+    private static int nextSupplierId = 0;
 
     private int supplierId;
     private String supplierName;
