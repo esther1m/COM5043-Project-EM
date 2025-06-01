@@ -7,10 +7,12 @@ import java.util.*;
 
 public class OrderTest {
     Order test_order0;
+    SupplierManagement test_supplierManagement;
     
     @BeforeEach
     void setup(){
         test_order0 = new Order(0, 0);
+        test_supplierManagement = new SupplierManagement();
         
     }
 
@@ -30,7 +32,6 @@ public class OrderTest {
 
     @Test
     void testAddProductsToOrder(){
-        SupplierManagement test_supplierManagement = new SupplierManagement();
         Supplier test_supplier = test_supplierManagement.defaultSupplier1;
         int supplierid_1 = test_supplier.getSupplierId();
       
