@@ -13,6 +13,7 @@ public class ProductTest {
     void setup(){
         test_product1 = new Product(0, "Test", 5.70, 150,0,supplierManagement);
         supplier = new Supplier("test", 04678563567f, "email@test.com");
+        supplierManagement = new SupplierManagement();
         supplierManagement.addSupplierToList(supplier);
     }
 
