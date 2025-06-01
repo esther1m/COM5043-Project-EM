@@ -3,9 +3,11 @@ import java.util.*;
 
 public class OrderProcessing {
     ArrayList <Order> orders;
+    int nextOrderId;
 
     public OrderProcessing(){
         orders = new ArrayList<>();
+        nextOrderId = -1;
     }
 
     public void placeOrder(int orderid, int customerid, HashMap<Product, Integer> products){
@@ -36,5 +38,9 @@ public class OrderProcessing {
 
     public ArrayList<Order> getOrders(){
         return orders;
+    }
+
+    public int getNextOrderID(){
+        return nextOrderId++;
     }
 }
