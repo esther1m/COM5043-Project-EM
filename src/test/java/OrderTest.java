@@ -13,7 +13,8 @@ public class OrderTest {
     void setup(){
         test_order0 = new Order(0, 0);
         test_supplierManagement = new SupplierManagement();
-        
+        Supplier test_supplier1 = new Supplier("test", 07875432578f, "email@email.com");
+        test_supplierManagement.addSupplierToList(test_supplier1);
     }
 
     @Test
@@ -32,13 +33,13 @@ public class OrderTest {
 
     @Test
     void testAddProductsToOrder(){
-        //Supplier test_supplier = test_supplierManagement.defaultSupplier1;
-        //int supplierid_1 = test_supplier.getSupplierId();
+        Supplier test_supplier = test_supplierManagement.defaultSupplier1;
+        int supplierid_1 = test_supplier.getSupplierId();
       
-        Product test_product = new Product(0, "Test", 7.00, 80, 0);
+        Product test_product = new Product(0, "Test", 7.00, 80, supplierid_1, test_supplierManagement);
         test_order0.addProductsToOrder(test_product, 70);
 
-        assertEquals(10, test_product.getProductQuantity());
+        assertEquals(160, test_product.getProductQuantity());
         assertEquals("Order complete", test_order0.getStatus());
     }
 //incomplete
@@ -46,8 +47,8 @@ public class OrderTest {
     void testAddMultipleProductsToOrder(){
         int supplierid_1 = test_supplierManagement.defaultSupplier1.getSupplierId();
         int supplierid_2 = test_supplierManagement.defaultSupplier2.getSupplierId();
-        Product test_product = new Product(0, "Test", 7.00, 80, supplierid_1);
-        Product test_product1 = new Product(1, "Test1", 7.00, 30, supplierid_1);
-        Product test_product2 = new Product(2, "Test2", 6.00, 10, supplierid_2);
+        Product test_product = new Product(0, "Test", 7.00, 80, supplierid_1, test_supplierManagement);
+        Product test_product1 = new Product(1, "Test1", 7.00, 30, supplierid_1, test_supplierManagement);
+        Product test_product2 = new Product(2, "Test2", 6.00, 10, supplierid_2, test_supplierManagement);
     }
 }

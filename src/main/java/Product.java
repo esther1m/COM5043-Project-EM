@@ -8,19 +8,20 @@ public class Product {
     private int preferredSupplierID;
     private int reorderThreshold;
     private int reorderQuantity;
-    SupplierManagement supplierManagement;
+    private SupplierManagement supplierManagement;
 
     //the constructor method for class Product
-    public Product (int productId, String productName, double productPrice, int productQuantity, int preferredSupplierID) {
+    public Product (int productId, String productName, double productPrice, int productQuantity, int preferredSupplierID, SupplierManagement sm) {
         this.productId = productId;
         this.productName = productName;
         this.productPrice = productPrice;
         this.productQuantity = productQuantity;
         this.preferredSupplierID = preferredSupplierID;
+        this.supplierManagement = sm;
 
         reorderThreshold = 15;
         reorderQuantity = 150;
-        supplierManagement = new SupplierManagement();
+        
     }
 
     //getter methods, returns the variables of Product instance
