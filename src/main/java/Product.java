@@ -5,15 +5,17 @@ public class Product {
     private String productName;
     private double productPrice;
     private int productQuantity;
+    private int preferredSupplierID;
     private int reorderThreshold;
     private int reorderQuantity;
 
     //the constructor method for class Product
-    public Product (int productId, String productName, double productPrice, int productQuantity) {
+    public Product (int productId, String productName, double productPrice, int productQuantity, int preferredSupplierID) {
         this.productId = productId;
         this.productName = productName;
         this.productPrice = productPrice;
         this.productQuantity = productQuantity;
+        this.preferredSupplierID = preferredSupplierID;
 
         reorderThreshold = 15;
         reorderQuantity = 150;
