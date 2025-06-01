@@ -17,8 +17,12 @@ public class Product {
         this.productPrice = productPrice;
         this.productQuantity = productQuantity;
         this.preferredSupplierID = preferredSupplierID;
-        this.supplierManagement = sm;
 
+        supplierManagement = new SupplierManagement();
+
+        this.supplierManagement = sm;
+        Supplier supplier = new Supplier("default", 06326895432f, "email.email");
+        supplierManagement.addSupplierToList(supplier);
         reorderThreshold = 15;
         reorderQuantity = 150;
         
