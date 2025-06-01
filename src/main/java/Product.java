@@ -49,6 +49,8 @@ public class Product {
             if (productQuantity == 0){
                 //place a new order from supplier to restock
             }
+        } else {
+            
         }
     }
 }
