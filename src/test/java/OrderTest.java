@@ -32,10 +32,10 @@ public class OrderTest {
 
     @Test
     void testAddProductsToOrder(){
-        Supplier test_supplier = test_supplierManagement.defaultSupplier1;
-        int supplierid_1 = test_supplier.getSupplierId();
+        //Supplier test_supplier = test_supplierManagement.defaultSupplier1;
+        //int supplierid_1 = test_supplier.getSupplierId();
       
-        Product test_product = new Product(0, "Test", 7.00, 80, supplierid_1);
+        Product test_product = new Product(0, "Test", 7.00, 80, 0);
         test_order0.addProductsToOrder(test_product, 70);
 
         assertEquals(10, test_product.getProductQuantity());
