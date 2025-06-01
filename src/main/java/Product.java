@@ -31,6 +31,10 @@ public class Product {
         return productQuantity;
     }
 
+    public void setProductQuantity(int quantity){
+        this.productQuantity = quantity;
+    }
+
     //adding stock to product
     public void addStock(int amount){
         if (amount > 0){

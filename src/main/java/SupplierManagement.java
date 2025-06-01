@@ -22,4 +22,15 @@ public class SupplierManagement {
         supplier.setSupplierPhoneNumber(phoneNumber);
         supplier.setSupplierEmail(email);
     }
+
+    public Supplier getSupplierById (int id){
+        Supplier supplierTarget = null;
+        for (Supplier supplier : supplierList) {
+            if (supplier.getSupplierId() == id) {
+                supplierTarget = supplier;
+                break;
+            }
+        }
+        return supplierTarget;
+    }
 }

@@ -2,6 +2,8 @@ import java.util.ArrayList;
 
 public class Supplier {
     //class Supplier, initalising the variables
+    private static int nextSupplierId = 0;
+
     private int supplierId;
     private String supplierName;
     private float supplierPhoneNumber;
@@ -9,11 +11,13 @@ public class Supplier {
     private ArrayList <Product> supplierOrderHistory;
 
     //the constructor method for class Product
-    public Supplier(int supplierId, String supplierName, float supplierPhoneNumber, String supplierEmail){
-        this.supplierId = supplierId;
+    public Supplier(String supplierName, float supplierPhoneNumber, String supplierEmail){
         this.supplierName = supplierName;
         this.supplierPhoneNumber = supplierPhoneNumber;
         this.supplierEmail = supplierEmail;
+
+        this.supplierId = nextSupplierId;
+        nextSupplierId++;
         supplierOrderHistory = new ArrayList<>();
     }
 

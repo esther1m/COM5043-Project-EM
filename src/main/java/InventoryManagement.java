@@ -3,7 +3,7 @@
 import java.util.HashMap;
 
 public class InventoryManagement{
-    private HashMap <Integer, Product> productsInventory;
+    public HashMap <Integer, Product> productsInventory;
 
     public InventoryManagement(){
         productsInventory = new HashMap<>();
@@ -28,6 +28,10 @@ public class InventoryManagement{
     //allowing to search/return/get product from inventory by id:
     public Product getProductById(int id){
         return productsInventory.get(id);
+    }
+
+    public HashMap <Integer, Product> getProducts(){
+        return productsInventory;
     }
     
 }

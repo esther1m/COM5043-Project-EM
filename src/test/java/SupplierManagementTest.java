@@ -15,7 +15,7 @@ public class SupplierManagementTest {
     @BeforeEach
     void setup(){
         test_suppliermanagement = new SupplierManagement();
-        test_supplier = new Supplier(1, "test supplier", 0363454637764f, "test@supplier.com");
+        test_supplier = new Supplier("test supplier", 0363454637764f, "test@supplier.com");
     }
 
     //checking a supplier can be successfuly be added to the method by checking the array is not null
