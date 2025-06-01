@@ -14,7 +14,7 @@ public class SupplierTest {
     
     @BeforeEach
     void setup(){
-        test_supplier = new Supplier(0, "Test", 09876543210f, "test@email.com");
+        test_supplier = new Supplier( "Test", 09876543210f, "test@email.com");
         test_product4 = new Product(0, "Test", 5.70, 150);
         
     }
