@@ -7,7 +7,6 @@ public class Order {
     int customerId;
     double totalCost;
     String status;
-    InventoryManagement inventoryManagement;
 
     public Order(int id, int customerId){
         this.id = id;
@@ -16,14 +15,9 @@ public class Order {
         totalCost = 0;
         productOrders = new HashMap<>();
         status = "Processing";
-        inventoryManagement = new InventoryManagement();
     }
 
-    public boolean addProductsToOrder(Product product, int customerOrderQuantity){
-        if (product == null){
-            System.out.println("Cannot add null product to order");
-            return false;
-        }
+    public void addProductsToOrder(Product product, int customerOrderQuantity){
         int product_id = product.getProductId();
 
         if (product.getProductQuantity() >= customerOrderQuantity){
@@ -32,11 +26,9 @@ public class Order {
             status = "Pending";
             totalCost = totalCost + (product.getProductPrice() * customerOrderQuantity);
         } else {
-            status = "Failed to place order of " + product + " due to stock issues";
-            return false;
+            status = "Failed to place order due to stock issues";
         }
         status = "Order complete";
-        return true;
     }
 
     public int getId() {
@@ -47,17 +39,7 @@ public class Order {
         return totalCost;
     }
 
-    public String getStatus(){
+    public String getStatus(){{
         return status;
-    }
-
-    public void getProductOrders(){
-        for (int productId : productOrders.keySet()) {
-            Product product = inventoryManagement.getProductById(productId);
-            System.out.println("ID: " + productId + " | Name: "  + product.getProductName() + " | Price £" + product.getProductPrice() + " | Quantity: " + productOrders.entrySet());
-        }
-
-    }
-
-    
+    }}
 }
