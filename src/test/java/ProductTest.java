@@ -9,7 +9,7 @@ public class ProductTest {
     
     @BeforeEach
     void setup(){
-        test_product1 = new Product(0, "Test", 5.70, 150);
+        test_product1 = new Product(0, "Test", 5.70, 150,0);
     }
 
     //checking the object initalises as it should by checking each field is correct
