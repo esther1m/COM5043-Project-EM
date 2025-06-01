@@ -7,10 +7,13 @@ public class ProductTest {
     Product test_product1;
     int test_product1_checkQuantity;
     SupplierManagement supplierManagement;
-    
+    Supplier supplier;
+
     @BeforeEach
     void setup(){
         test_product1 = new Product(0, "Test", 5.70, 150,0,supplierManagement);
+        supplier = new Supplier("test", 04678563567f, "email@test.com");
+        supplierManagement.addSupplierToList(supplier);
     }
 
     //checking the object initalises as it should by checking each field is correct
