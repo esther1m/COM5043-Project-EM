@@ -2,7 +2,9 @@ import java.util.ArrayList;
 
 public class Supplier {
     //class Supplier, initalising the variables
-    private int supplierId = -1;
+    private static int nextSupplierId = -1;
+
+    private int supplierId;
     private String supplierName;
     private float supplierPhoneNumber;
     private String supplierEmail;
@@ -14,7 +16,8 @@ public class Supplier {
         this.supplierPhoneNumber = supplierPhoneNumber;
         this.supplierEmail = supplierEmail;
 
-        supplierId = supplierId++;
+        this.supplierId = nextSupplierId;
+        nextSupplierId++;
         supplierOrderHistory = new ArrayList<>();
     }
 
