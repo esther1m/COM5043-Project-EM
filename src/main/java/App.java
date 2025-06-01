@@ -191,10 +191,11 @@ public class App {
                 case "2":
                     System.out.println();
                     //System.out.println("ID |   Name    | Price | Quantity");
-                    for (int productId : inventoryManagement.productsInventory.keySet()) {
+                    /*for (int productId : inventoryManagement.productsInventory.keySet()) {
                         Product product = inventoryManagement.getProductById(productId);
                         System.out.println("ID: " + productId + " | Name: "  + product.getProductName() + " | Price £" + product.getProductPrice() + " | Quantity: " + product.getProductQuantity());
-                    }
+                    }*/
+                    inventoryManagement.getProducts();
                     productsSwitch();
                     break;
             //place an order
