@@ -6,10 +6,11 @@ public class ProductTest {
     
     Product test_product1;
     int test_product1_checkQuantity;
+    SupplierManagement supplierManagement;
     
     @BeforeEach
     void setup(){
-        test_product1 = new Product(0, "Test", 5.70, 150,0);
+        test_product1 = new Product(0, "Test", 5.70, 150,0,supplierManagement);
     }
 
     //checking the object initalises as it should by checking each field is correct

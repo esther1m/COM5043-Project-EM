@@ -10,13 +10,14 @@ public class SupplierTest {
     
     Supplier test_supplier;
     Product test_product4;
+    SupplierManagement supplierManagement;
     //int test_product1_checkQuantity;
     
     @BeforeEach
     void setup(){
         test_supplier = new Supplier( "Test", 09876543210f, "test@email.com");
         int test_supplier_id = test_supplier.getSupplierId();
-        test_product4 = new Product(0, "Test", 5.70, 150, test_supplier_id);
+        test_product4 = new Product(0, "Test", 5.70, 150, test_supplier_id, supplierManagement);
         
     }
 
