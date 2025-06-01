@@ -20,6 +20,7 @@ public class Product {
 
         reorderThreshold = 15;
         reorderQuantity = 150;
+        supplierManagement = new SupplierManagement();
     }
 
     //getter methods, returns the variables of Product instance
