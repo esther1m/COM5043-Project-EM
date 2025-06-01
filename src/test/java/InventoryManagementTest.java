@@ -40,7 +40,7 @@ public class InventoryManagementTest {
     //testing that the removeProduct function works as expected by checking the id against the hashmap
     @Test
     void testRemoveProduct(){
-        test_inventory.removeProduct(test_product1);
+        test_inventory.removeProduct(test_product1.getProductId());
         Product checktestproduct = test_inventory.getProductById(1);
         assertNull(checktestproduct, "Product should be remove with no errors");
     }
@@ -55,7 +55,7 @@ public class InventoryManagementTest {
     //testing the system won't remove a nonexisting product by checking for null value
     @Test
     void testRemovalNonexistentProduct(){
-        test_inventory.removeProduct(test_product2);
+        test_inventory.removeProduct(test_product2.getProductId());
         assertNull(test_inventory.getProductById(2), "Nonexistent product removal should have no effect");
     }
 

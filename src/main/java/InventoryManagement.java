@@ -20,8 +20,7 @@ public class InventoryManagement{
     }
 
     //removing products from the hashmap
-    public boolean removeProduct(Product product){
-        int id = product.getProductId();
+    public boolean removeProduct(int id){
         if (productsInventory.containsKey(id)){
             productsInventory.remove(id);
             return true;

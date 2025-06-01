@@ -90,8 +90,8 @@ public class App {
                 case "3":
                     int user_input_productid2 = scanner.nextInt();
                     System.out.println("What's the product id of the product you want to delete? ");
-                    Product removing_product = inventoryManagement.getProductById(user_input_productid2);
-                    inventoryManagement.removeProduct(removing_product);
+                    //Product removing_product = inventoryManagement.getProductById(user_input_productid2);
+                    inventoryManagement.removeProduct(user_input_productid2);
                     break;
                 case "4":
                     System.out.println("Exiting... returning to the main menu");
