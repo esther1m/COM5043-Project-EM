@@ -5,6 +5,8 @@ public class Product {
     private String productName;
     private double productPrice;
     private int productQuantity;
+    private int reorderThreshold;
+    private int reorderQuantity;
 
     //the constructor method for class Product
     public Product (int productId, String productName, double productPrice, int productQuantity) {
@@ -12,6 +14,9 @@ public class Product {
         this.productName = productName;
         this.productPrice = productPrice;
         this.productQuantity = productQuantity;
+
+        reorderThreshold = 15;
+        reorderQuantity = 150;
     }
 
     //getter methods, returns the variables of Product instance
@@ -50,7 +55,11 @@ public class Product {
                 //place a new order from supplier to restock
             }
         } else {
-            
+            System.out.println("Sorry, this product " + productName + " could not be ordered.");
+        }
+        if (productQuantity < reorderThreshold) {
+            System.out.println(productName + " is low stock.");
+
         }
     }
 }
