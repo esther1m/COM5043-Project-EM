@@ -55,4 +55,10 @@ public class Supplier {
     public void addOrderHistory(Product product){
         supplierOrderHistory.add(product);
     }
+
+    //method to order stock
+    public void orderStock(Product product, int stock){
+        product.addStock(stock);
+        this.addOrderHistory(product);
+    }
 }

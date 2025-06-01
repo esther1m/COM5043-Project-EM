@@ -8,6 +8,7 @@ public class Product {
     private int preferredSupplierID;
     private int reorderThreshold;
     private int reorderQuantity;
+    SupplierManagement supplierManagement;
 
     //the constructor method for class Product
     public Product (int productId, String productName, double productPrice, int productQuantity, int preferredSupplierID) {
@@ -49,19 +50,17 @@ public class Product {
         }
     }
 
-    //removing stock from product
+    //removing stock from product, checking there's enough stock and reordering if not
     public void removeStock(int amount){
         if (amount > 0 && productQuantity >= amount) {
             productQuantity = productQuantity - amount;
-            if (productQuantity == 0){
-                //place a new order from supplier to restock
-            }
         } else {
             System.out.println("Sorry, this product " + productName + " could not be ordered.");
         }
         if (productQuantity < reorderThreshold) {
             System.out.println(productName + " is low stock.");
-
+            Supplier supplier = supplierManagement.getSupplierById(preferredSupplierID);
+            supplier.orderStock(this, reorderQuantity);
         }
     }
 }
