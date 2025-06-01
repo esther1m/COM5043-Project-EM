@@ -10,7 +10,8 @@ public class App {
     HashMap<Product, Integer> products;
     //Product product = new Product(0, user_input, 0, 0)
     InventoryManagement inventoryManagement = new InventoryManagement();
-    
+    Supplier supplier = new Supplier("Best Suppliers LTD", 075837825377f, "bestsuppliersltd@gmail.com");
+    SupplierManagement supplierManagement = new SupplierManagement();
 
     public void menu(){
         //user_input = null;
@@ -105,6 +106,76 @@ public class App {
         }
     }
 
+    public void SupplierMenu(){
+        System.out.println("Please select an option:");
+        System.out.println("1. Add Supplier");
+        System.out.println("2. Update Supplier Details");
+        System.out.println("3. Delete Supplier");
+        System.out.println("4. Exit");
+    }
+
+    public void supplierSwitch(){
+        boolean checkSupplier = true;
+
+        while (checkSupplier){
+        SupplierMenu();
+            user_input = scanner.nextLine();
+
+            switch (user_input){
+                case "1":
+                    System.out.println("What's the Supplier called?");
+                    String user_suplier_name = scanner.nextLine();
+                    System.out.println("What's the supplier's contact number?");
+                    float user_supplier_phone_number = scanner.nextFloat();
+                    System.out.println("What's the supplier's email?");
+                    String user_supplier_email = scanner.nextLine();
+                    scanner.nextLine();
+
+                    Supplier supplier = new Supplier(user_suplier_name, user_supplier_phone_number, user_supplier_email);
+                    supplierManagement.addSupplierToList(supplier);
+                    break;
+                case "2":
+                    System.out.println("What Supplier do you want to edit? Please insert their supplier id: ");
+                    int user_supplier_id = scanner.nextInt();
+                    Supplier changing_supplier = supplierManagement.getSupplierById(user_supplier_id);
+
+                    System.out.println("Do you want to edit the supplier contact number? (Y or N): ");
+                    String answer1 = scanner.nextLine();
+                    if (answer1 == "Y"){
+                        System.out.println("Enter the supplier's new phone number: ");
+                        float new_number = scanner.nextFloat();
+                        changing_supplier.setSupplierPhoneNumber(new_number);
+                        System.out.println("Contact number changed: " + new_number);
+                    }
+                    System.out.println("Do you want to edit the supplier's email? (Y or N): ");
+                    String answer2 = scanner.nextLine();
+                    if (answer2 == "Y") {
+                        System.out.println("Enter the supplier's new email: ");
+                        String new_email = scanner.nextLine();
+                        changing_supplier.setSupplierEmail(new_email);
+                        System.out.println("Contact number changed: " + new_email);
+                    }
+                    break;
+                case "3":
+                    System.out.println("What's the supplier id of the supplier you want to delete? ");
+                    int user_input_supplierid = scanner.nextInt();
+                    Supplier removing_supplier = supplierManagement.getSupplierById(user_input_supplierid);
+                    supplierManagement.deleteSupplierFromList(removing_supplier);
+                    System.out.println("Successfully delted supplier " + removing_supplier);
+                    break;
+                case "4":
+                    System.out.println("Exiting... returning to the main menu");
+                    checkSupplier = false;
+                    break;
+                default:
+                    System.out.println("Invalid input. Try again.");
+                    break;
+
+            }
+            
+        }
+    }
+
     public void runSystem(){
         boolean active = true;
         while (active) {
@@ -153,6 +224,12 @@ public class App {
 
             //view suppliers
                 case "4":
+                System.out.println();
+                
+                for (Supplier supplier : supplierManagement.supplierList) {
+                    System.out.println("ID: " + supplier.getSupplierId() + " | Name: "  + supplier.getSupplierName() + " | Phone: " + supplier.getSupplierPhoneNumber() + " | Email: " + supplier.getSupplierEmail());
+                }
+                    supplierSwitch();
                     break;
             //exit
                 case "5":
