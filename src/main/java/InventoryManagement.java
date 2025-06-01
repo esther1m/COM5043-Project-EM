@@ -42,15 +42,6 @@ public class InventoryManagement{
             System.out.println("ID: " + productId + " | Name: "  + product.getProductName() + " | Price £" + product.getProductPrice() + " | Quantity: " + product.getProductQuantity());
         }
     }
-
-    public double getTotalValue() {
-        double total = 0.0;
-        for (Product product : productsInventory.values()) {
-            total = total + (product.getProductPrice() * product.getProductQuantity());
-        }
-        return total;
-    }
-    
     
 }
 
