@@ -9,11 +9,13 @@ public class Supplier {
     private ArrayList <Product> supplierOrderHistory;
 
     //the constructor method for class Product
-    public Supplier(int supplierId, String supplierName, float supplierPhoneNumber, String supplierEmail){
-        this.supplierId = supplierId;
+    public Supplier(String supplierName, float supplierPhoneNumber, String supplierEmail){
         this.supplierName = supplierName;
         this.supplierPhoneNumber = supplierPhoneNumber;
         this.supplierEmail = supplierEmail;
+
+        supplierId = -1;
+        supplierId = supplierId++;
         supplierOrderHistory = new ArrayList<>();
     }
 
