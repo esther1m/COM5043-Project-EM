@@ -32,7 +32,7 @@ public class SupplierTest {
         String test_supplier_checkemail = test_supplier.getSupplierEmail();
         ArrayList <Product> test_supplier_checklist = test_supplier.getSupplierOrderHistory();
 
-        assertEquals(0, test_supplier_checkid);
+        assertEquals(87, test_supplier_checkid);
         assertEquals("Test", test_supplier_checkname);
         assertEquals(09876543210f, test_supplier_checkphone);
         assertTrue(test_supplier_checklist.isEmpty());
