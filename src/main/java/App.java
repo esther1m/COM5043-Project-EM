@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class App {
@@ -6,8 +7,10 @@ public class App {
     String user_input;
     Scanner scanner = new Scanner(System.in);
     OrderProcessing orderProcessing = new  OrderProcessing();
+    HashMap<Product, Integer> products;
     //Product product = new Product(0, user_input, 0, 0)
     InventoryManagement inventoryManagement = new InventoryManagement();
+    
 
     public void menu(){
         //user_input = null;
@@ -125,7 +128,27 @@ public class App {
                     break;
             //place an order
                 case "3":
-                    orderProcessing.placeOrder(0, 0, null);
+                    products = new HashMap<>();
+                    //getting customer id
+                    System.out.println("Please insert your customer ID or make one up now:");
+                    int user_id = scanner.nextInt();
+                    //getting auto generated order id
+                    int user_order_id = orderProcessing.getNextOrderID();
+                    //allowing user to add as many products as they want
+                    Boolean not_complete = true;
+                    while (not_complete){
+                        System.out.println("Please add products to your order by entering the product id. When your order is complete, please type 'y.'");
+                        if (scanner.equals("y")){
+                            not_complete = false;
+                        } else {
+                            int user_product_id = scanner.nextInt();
+                            System.out.println("What quantity would you like to buy? ");
+                            int user_quantity = scanner.nextInt();
+                            Product product = inventoryManagement.getProductById(user_product_id);
+                            products.put(product, user_quantity);
+                        }
+                    }
+                        orderProcessing.placeOrder(user_order_id, user_id, products);
                     break;
 
             //view suppliers
