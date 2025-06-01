@@ -29,7 +29,7 @@ public class SupplierManagementTest {
     @Test
     void testDeleteSupplierFromList(){
         test_suppliermanagement.deleteSupplierFromList(test_supplier);
-        assertEquals(0, test_suppliermanagement.supplierList.size());
+        assertEquals(2, test_suppliermanagement.supplierList.size());
     }
 
     //testing updatng supplier contacts

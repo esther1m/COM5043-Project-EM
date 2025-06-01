@@ -73,9 +73,11 @@ public class App {
                     double user_product_price = scanner.nextDouble();
                     System.out.println("What quantity do we currently have of the product in stock?");
                     int user_product_quantity = scanner.nextInt();
+                    System.out.print("What's the id of the preferred supplier for this product?");
+                    int user_product_supplier = scanner.nextInt();
                     scanner.nextLine();
 
-                    Product product = new Product(0, user_product_name, user_product_price, user_product_quantity);
+                    Product product = new Product(0, user_product_name, user_product_price, user_product_quantity, user_product_supplier, supplierManagement);
                     inventoryManagement.addProduct(product);
                     break;
                 case "2":

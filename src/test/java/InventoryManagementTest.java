@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 //setting up variables for all tests
 public class InventoryManagementTest {
     InventoryManagement test_inventory;
+    SupplierManagement test_supplierManagement;
     Product test_product0;
     Product test_product1;
     Product test_product2;
@@ -12,9 +13,12 @@ public class InventoryManagementTest {
     @BeforeEach
     void setup(){
         test_inventory = new InventoryManagement();
-        test_product0 = new Product(0, "test", 3.00, 50);
-        test_product1 = new Product(1, "Second test", 6.00, 40);
-        test_product2 = new Product(2, "Third product", 30.00, 0);
+        test_supplierManagement = new SupplierManagement();
+        int supplierid_1 = test_supplierManagement.defaultSupplier1.getSupplierId();
+        int supplierid_2 = test_supplierManagement.defaultSupplier2.getSupplierId();
+        test_product0 = new Product(0, "test", 3.00, 50, supplierid_1, test_supplierManagement);
+        test_product1 = new Product(1, "Second test", 6.00, 40, supplierid_1, test_supplierManagement);
+        test_product2 = new Product(2, "Third product", 30.00, 0, supplierid_2, test_supplierManagement);
 
         test_inventory.addProduct(test_product1);
     }

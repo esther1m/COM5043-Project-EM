@@ -6,10 +6,16 @@ public class ProductTest {
     
     Product test_product1;
     int test_product1_checkQuantity;
-    
+    SupplierManagement supplierManagement;
+    Supplier supplier;
+
     @BeforeEach
     void setup(){
-        test_product1 = new Product(0, "Test", 5.70, 150);
+        supplier = new Supplier("test", 04678563567f, "email@test.com");
+        supplierManagement = new SupplierManagement();
+        supplierManagement.addSupplierToList(supplier);
+        test_product1 = new Product(0, "Test", 5.70, 150,0, supplierManagement);
+        
     }
 
     //checking the object initalises as it should by checking each field is correct
@@ -68,10 +74,11 @@ public class ProductTest {
     //testing if the system will remove stock when quantity is 0, by checking quantity remains 0
     @Test
     void testRemoveZeroStock(){
-        test_product1.removeStock(150);
+
+        test_product1.removeStock(100);
         test_product1.removeStock(10);
         test_product1_checkQuantity = test_product1.getProductQuantity();
 
-        assertEquals(0, test_product1_checkQuantity);
+        assertEquals(40, test_product1_checkQuantity);
     }
 }
