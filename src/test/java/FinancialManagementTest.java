@@ -12,10 +12,11 @@ public class FinancialManagementTest {
         SupplierManagement supplierManagement = new SupplierManagement();
         Supplier supplier = new Supplier("test", 075648364465f ,"test@test");
         supplierManagement.addSupplierToList(supplier);
+        int preferredSupplierID = supplier.getSupplierId();
 
         // adding products to the inventory
-        Product product1 = new Product(1, "Widget", 10.0, 5, 1, supplierManagement); // £50 stock value
-        Product product2 = new Product(2, "Gadget", 20.0, 3, 1, supplierManagement); // £60 stock value
+        Product product1 = new Product(1, "Widget", 10.0, 5, preferredSupplierID, supplierManagement); // £50 stock value
+        Product product2 = new Product(2, "Gadget", 20.0, 3, preferredSupplierID, supplierManagement); // £60 stock value
         inventory.addProduct(product1);
         inventory.addProduct(product2);
 
@@ -46,8 +47,9 @@ public class FinancialManagementTest {
         SupplierManagement sm = new SupplierManagement();
         Supplier supplier = new Supplier("test supplier 2", 75859756378f, "emai@email.com");
         sm.addSupplierToList(supplier);
+        int preferredSupplierID = supplier.getSupplierId();
 
-        Product p1 = new Product(60, "BalanceItem", 10.0, 5, 1, sm); // Inventory £50
+        Product p1 = new Product(60, "BalanceItem", 10.0, 5, preferredSupplierID, sm); // Inventory £50
         inventory2.addProduct(p1);
 
         Order order = new Order(765, 4);
