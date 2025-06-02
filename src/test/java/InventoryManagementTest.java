@@ -83,7 +83,8 @@ public class InventoryManagementTest {
     //testing the system doesn't add a null product
     @Test
     void testAddNullProduct() {
-        assertFalse(test_inventory.addProduct(null));
+        InventoryManagement inventory = new InventoryManagement();
+        assertFalse(inventory.addProduct(null));
     }
 
 }
