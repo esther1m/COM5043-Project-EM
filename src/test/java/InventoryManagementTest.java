@@ -69,5 +69,23 @@ public class InventoryManagementTest {
         Product checktestproductbyid = test_inventory.getProductById(4);
         assertNull(checktestproductbyid, "Product shouldn't exist, should return null");
     }
+
+    //testing the system doesn't remove a non existent product
+    @Test
+    void testRemoveNonexistentProduct() {
+        Supplier test_supplier = new Supplier("TestSupplier", 02074587654f, "test@test");
+        test_supplierManagement.addSupplierToList(test_supplier);
+
+        Product product = new Product(999, "Nonexistent", 5.0, 5, 1, test_supplierManagement);
+        assertFalse(test_inventory.removeProduct(999));
+    }
+
+    //testing the system doesn't add a null product
+    @Test
+    void testAddNullProduct() {
+        InventoryManagement inventory = new InventoryManagement();
+        assertFalse(inventory.addProduct(null));
+    }
+
 }
 

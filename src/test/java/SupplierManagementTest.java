@@ -1,6 +1,7 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 
@@ -40,4 +41,11 @@ public class SupplierManagementTest {
         assertEquals(test_supplier.getSupplierPhoneNumber(), 0);
         assertNull(test_supplier.getSupplierEmail());
     }
+
+    //testing adding null suppliers, should return false
+    @Test
+    void testAddNullSupplier() {
+        assertFalse(test_suppliermanagement.addSupplierToList(null));
+    }
+
 }
