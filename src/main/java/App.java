@@ -162,7 +162,7 @@ public class App {
                     System.out.println("What's the supplier id of the supplier you want to delete? ");
                     int user_input_supplierid = scanner.nextInt();
                     Supplier removing_supplier = supplierManagement.getSupplierById(user_input_supplierid);
-                    supplierManagement.deleteSupplierFromList(removing_supplier);
+                    supplierManagement.deleteSupplierFromList(user_input_supplierid);
                     System.out.println("Successfully delted supplier " + removing_supplier);
                     break;
                 case "4":

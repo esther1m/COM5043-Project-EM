@@ -28,7 +28,7 @@ public class SupplierManagementTest {
     //testing a supplier can be successfuly removed from the method by checking the array is null
     @Test
     void testDeleteSupplierFromList(){
-        test_suppliermanagement.deleteSupplierFromList(test_supplier);
+        test_suppliermanagement.deleteSupplierFromList(test_supplier.getSupplierId());
         assertEquals(2, test_suppliermanagement.supplierList.size());
     }
 

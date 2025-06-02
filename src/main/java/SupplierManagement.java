@@ -15,21 +15,15 @@ public class SupplierManagement {
     }
 
     //allowing for suppliers to be added to the array
-    public void addSupplierToList(Supplier supplier){
-        supplierList.add(supplier);
+    public boolean addSupplierToList(Supplier supplier){
+        if (!supplierList.contains(supplier)){
+            supplierList.add(supplier);
+            return true;
+        }
+        return false; //-this in case of a duplicate
     }
 
-    //deleting suppliers from the array
-    public void deleteSupplierFromList(Supplier supplier){
-        supplierList.remove(supplier);
-    }
-
-    //updating supplier contact details
-    public void updateSupplierContactDetails(Supplier supplier, int phoneNumber, String email){
-        supplier.setSupplierPhoneNumber(phoneNumber);
-        supplier.setSupplierEmail(email);
-    }
-
+    //enabling user friendly ways to refer to objects/suppliers
     public Supplier getSupplierById (int id){
         Supplier supplierTarget = null;
         for (Supplier supplier : supplierList) {
@@ -39,5 +33,17 @@ public class SupplierManagement {
             }
         }
         return supplierTarget;
+    }
+
+    //deleting suppliers from the array
+    public void deleteSupplierFromList(int id){
+        Supplier supplier = getSupplierById(id);
+        supplierList.remove(supplier);
+    }
+
+    //updating supplier contact details
+    public void updateSupplierContactDetails(Supplier supplier, int phoneNumber, String email){
+        supplier.setSupplierPhoneNumber(phoneNumber);
+        supplier.setSupplierEmail(email);
     }
 }
