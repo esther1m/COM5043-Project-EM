@@ -38,11 +38,15 @@ public class Supplier {
         return supplierEmail;
     }
 
-    public ArrayList getSupplierOrderHistory(){
+    public ArrayList <Product> getSupplierOrderHistory(){
         return supplierOrderHistory;
     }
 
     //setter methods if the user wants to update the supplier details
+    public void setSupplierName(String name){
+        supplierName = name;
+    }
+
     public void setSupplierPhoneNumber(float phoneNumber){
         supplierPhoneNumber = phoneNumber;
     }
