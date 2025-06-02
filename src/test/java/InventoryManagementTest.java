@@ -16,9 +16,10 @@ public class InventoryManagementTest {
         test_supplierManagement = new SupplierManagement();
         int supplierid_1 = test_supplierManagement.defaultSupplier1.getSupplierId();
         int supplierid_2 = test_supplierManagement.defaultSupplier2.getSupplierId();
-        test_product0 = new Product(0, "test", 3.00, 50, supplierid_1, test_supplierManagement);
-        test_product1 = new Product(1, "Second test", 6.00, 40, supplierid_1, test_supplierManagement);
-        test_product2 = new Product(2, "Third product", 30.00, 0, supplierid_2, test_supplierManagement);
+        test_product0 = new Product("test", 3.00, 50, supplierid_1, test_supplierManagement);
+        test_product1 = new Product("Second test", 6.00, 40, supplierid_1, test_supplierManagement);
+        test_product2 = new Product("Third product", 30.00, 0, supplierid_2, test_supplierManagement);
+        
 
         test_inventory.addProduct(test_product1);
     }
@@ -26,8 +27,9 @@ public class InventoryManagementTest {
     //testing that the addProduct function works as expected by checking the id and name against the hashmap
     @Test
     void testAddProduct(){
+        int test_p0_id = test_product0.getProductId();
         boolean addingProduct = test_inventory.addProduct(test_product0);
-        Product checktestproduct = test_inventory.getProductById(0);
+        Product checktestproduct = test_inventory.getProductById(test_p0_id);
 
         assertTrue(addingProduct, "Inventory should be added");
         assertNotNull(checktestproduct, "Product should be added with no errors");
@@ -37,7 +39,8 @@ public class InventoryManagementTest {
     // testing getproductbyid works by assert equals (should be the same product)
     @Test
     void testGetProductById(){
-        Product checktestproductbyid = test_inventory.getProductById(1);
+        int test_p1_id = test_product1.getProductId();
+        Product checktestproductbyid = test_inventory.getProductById(test_p1_id);
         assertEquals(checktestproductbyid, test_product1);
     }
 
@@ -76,7 +79,7 @@ public class InventoryManagementTest {
         Supplier test_supplier = new Supplier("TestSupplier", 02074587654f, "test@test");
         test_supplierManagement.addSupplierToList(test_supplier);
 
-        Product product = new Product(999, "Nonexistent", 5.0, 5, 1, test_supplierManagement);
+        Product product = new Product("Nonexistent", 5.0, 5, 1, test_supplierManagement);
         assertFalse(test_inventory.removeProduct(999));
     }
 

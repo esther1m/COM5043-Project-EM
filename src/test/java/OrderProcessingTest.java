@@ -17,16 +17,17 @@ public class OrderProcessingTest {
 
         test_sm.addSupplierToList(test_supplier);
 
-        Product product = new Product(1, "TestItem", 10.0, 10, 1, test_sm);
+        Product product = new Product("TestItem", 10.0, 10, 1, test_sm);
+        int product_id = product.getProductId();
         test_inventory.addProduct(product);
         products.put(product, 5);
 
         OrderProcessing test_op = new OrderProcessing();
         test_op.placeOrder(6, 679, products);
         
-        assertEquals(155, test_inventory.getProductById(1).getProductQuantity());
+        assertEquals(155, test_inventory.getProductById(product_id).getProductQuantity());
 
         test_op.cancelOrder(6);
-        assertEquals(155, test_inventory.getProductById(1).getProductQuantity());
+        assertEquals(155, test_inventory.getProductById(product_id).getProductQuantity());
     }
 }

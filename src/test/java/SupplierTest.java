@@ -19,7 +19,7 @@ public class SupplierTest {
         int test_supplier_id = test_supplier.getSupplierId();
         supplierManagement = new SupplierManagement();
         supplierManagement.addSupplierToList(test_supplier);
-        test_product4 = new Product(0, "Test", 5.70, 150, test_supplier_id, supplierManagement);
+        test_product4 = new Product("Test", 5.70, 150, test_supplier_id, supplierManagement);
         
     }
 
