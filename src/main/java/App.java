@@ -187,7 +187,7 @@ public class App {
             switch (user_input) {
             //view order history
                 case "1":
-                    System.out.println(orderProcessing.getOrders());
+                    orderProcessing.getOrders();
                     break;
             //view products
                 case "2":
