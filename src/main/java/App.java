@@ -56,7 +56,7 @@ public class App {
                     int user_product_supplier = scanner.nextInt();
                     scanner.nextLine();
 
-                    Product product = new Product(0, user_product_name, user_product_price, user_product_quantity, user_product_supplier, supplierManagement);
+                    Product product = new Product(user_product_name, user_product_price, user_product_quantity, user_product_supplier, supplierManagement);
                     inventoryManagement.addProduct(product);
                     break;
                 case "2":

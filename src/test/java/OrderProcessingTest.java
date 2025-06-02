@@ -17,7 +17,7 @@ public class OrderProcessingTest {
 
         test_sm.addSupplierToList(test_supplier);
 
-        Product product = new Product(1, "TestItem", 10.0, 10, 1, test_sm);
+        Product product = new Product("TestItem", 10.0, 10, 1, test_sm);
         test_inventory.addProduct(product);
         products.put(product, 5);
 
