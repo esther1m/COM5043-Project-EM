@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Order {
-    private static int nextOrderId = 0;
     int id;
     HashMap<Integer, Integer> productOrders;
     int customerId;
@@ -10,11 +9,10 @@ public class Order {
     String status;
     InventoryManagement inventoryManagement;
 
-    public Order(int customerId){
+    public Order(int id, int customerId){
+        this.id = id;
         this.customerId = customerId;
 
-        this.id = nextOrderId;
-        nextOrderId++;
         totalCost = 0;
         productOrders = new HashMap<>();
         status = "Processing";
