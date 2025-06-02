@@ -12,7 +12,7 @@ public class OrderTest {
     
     @BeforeEach
     void setup(){
-        test_order0 = new Order(0, 0);
+        test_order0 = new Order(0);
         test_supplierManagement = new SupplierManagement();
         Supplier test_supplier1 = new Supplier("test", 07875432578f, "email@email.com");
         test_supplierManagement.addSupplierToList(test_supplier1);
@@ -20,14 +20,9 @@ public class OrderTest {
 
     @Test
     void testCreateOrder(){
-
-
-        int test_id = test_order0.getId();
-        //int test_customerId = test_order0.get
         double test_totalCost = test_order0.getTotalCost();
         String test_status = test_order0.getStatus();
 
-        assertEquals(0, test_id);
         assertEquals(0, test_totalCost);
         assertEquals("Processing", test_status);
     }
@@ -46,7 +41,7 @@ public class OrderTest {
 //testing adding multiple products to one order
     @Test
     void testAddMultipleProductsToOrder(){
-        Order test_order2 = new Order(70, 553);
+        Order test_order2 = new Order(553);
         int supplierid_1 = test_supplierManagement.defaultSupplier1.getSupplierId();
         int supplierid_2 = test_supplierManagement.defaultSupplier2.getSupplierId();
         Product test_product = new Product("Test", 7.00, 80, supplierid_1, test_supplierManagement);
@@ -66,7 +61,7 @@ public class OrderTest {
 
     @Test
     void testOrderStatusAfterInvalidAdd() {
-        Order test_order1 = new Order(90, 679);
+        Order test_order1 = new Order(679);
         assertFalse(test_order1.addProductsToOrder(null, 0));
         assertEquals("Failed to place order of null due to stock issues", test_order1.getStatus());
 }

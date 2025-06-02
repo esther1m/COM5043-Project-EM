@@ -12,7 +12,7 @@ public class OrderProcessing {
     }
 
     public void placeOrder(int orderid, int customerid, HashMap<Product, Integer> products){
-        Order order1 = new Order(orderid, customerid);
+        Order order1 = new Order(customerid);
 
         for (Map.Entry<Product, Integer> entry : products.entrySet()) {
             Product product = entry.getKey();

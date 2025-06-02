@@ -21,7 +21,7 @@ public class FinancialManagementTest {
         inventory.addProduct(product2);
 
         // creating order (simulate sale of 2 gadgets = £40)
-        Order order = new Order(4, 789);
+        Order order = new Order(789);
         order.addProductsToOrder(product1, 2); // 2 gadgets ordered
         order.addProductsToOrder(product2, 1);
 
@@ -52,7 +52,7 @@ public class FinancialManagementTest {
         Product p1 = new Product("BalanceItem", 10.0, 5, preferredSupplierID, sm); // Inventory £50
         inventory2.addProduct(p1);
 
-        Order order = new Order(765, 4);
+        Order order = new Order(4);
         order.addProductsToOrder(p1, 5); // Sale £50
 
         ArrayList<Order> orders = new ArrayList<>();
