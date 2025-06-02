@@ -39,5 +39,28 @@ public class FinancialManagementTest {
         assertEquals(40.0, salesRevenue, 0.01);     // 2 x £20
         assertEquals(-4530, netIncome, 0.01);       // loss scenario
     }
+
+    @Test
+    void testNetIncomeZero() {
+        InventoryManagement inventory2 = new InventoryManagement();
+        SupplierManagement sm = new SupplierManagement();
+        Supplier supplier = new Supplier("test supplier 2", 75859756378f, "emai@email.com");
+        sm.addSupplierToList(supplier);
+
+        Product p1 = new Product(60, "BalanceItem", 10.0, 5, 1, sm); // Inventory £50
+        inventory2.addProduct(p1);
+
+        Order order = new Order(765, 4);
+        order.addProductsToOrder(p1, 5); // Sale £50
+
+        ArrayList<Order> orders = new ArrayList<>();
+        orders.add(order);
+
+        FinancialManagement report = new FinancialManagement(inventory2, orders);
+        assertEquals(1500.0, report.calculateInventory(), 0.01);
+        assertEquals(50.0, report.calculateSalesRevenue(), 0.01);
+        assertEquals(-1450.0, report.calculateSalesRevenue() - report.calculateInventory(), 0.01);
+}
+
 }
 
