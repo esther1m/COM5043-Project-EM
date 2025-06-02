@@ -22,7 +22,9 @@ public class App {
             System.out.println("4. View Suppliers");
             //System.out.println("5. Edit Supplier Details");
             //System.out.println("6. View Financial Report");
-            System.out.println("7. Exit");
+            System.out.println("7. View total inventory values");
+            System.out.println("8. Generate a Financial Report");
+            System.out.println("9. Exit");
             System.out.println("Enter your choice: ");
             //user_input = scanner.nextLine();
     }
@@ -207,8 +209,15 @@ public class App {
                 }
                     supplierSwitch();
                     break;
-            //exit
                 case "5":
+                    System.out.println();
+                    System.out.println("Total Inventory Value: £" + inventoryManagement.getTotalValue());
+                    break;
+                case "6":
+                    FinancialManagement report = new FinancialManagement(inventoryManagement, orderProcessing.orders);
+                    report.generateReport();;
+            //exit
+                case "7":
                     System.out.println("Exiting the system...");
                     System.out.println("Have a good day :)");
                     active = false;
