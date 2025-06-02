@@ -42,7 +42,7 @@ public class SupplierManagementTest {
         assertNull(test_supplier.getSupplierEmail());
     }
 
-    //testing adding null suppliers
+    //testing adding null suppliers, should return false
     @Test
     void testAddNullSupplier() {
         assertFalse(test_suppliermanagement.addSupplierToList(null));
