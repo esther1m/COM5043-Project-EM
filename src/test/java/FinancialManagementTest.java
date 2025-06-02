@@ -1,50 +1,43 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
-    import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
 
 public class FinancialManagementTest {
 
     @Test
     void testFinancialCalculationsAreCorrect() {
-        // Setup
         InventoryManagement inventory = new InventoryManagement();
         SupplierManagement supplierManagement = new SupplierManagement();
-        Supplier supplier = new Supplier(1, "FinanceSupplier");
+        Supplier supplier = new Supplier("test", 075648364465f ,"test@test");
         supplierManagement.addSupplierToList(supplier);
 
-        // Add products
+        // adding products to the inventory
         Product product1 = new Product(1, "Widget", 10.0, 5, 1, supplierManagement); // £50 stock value
         Product product2 = new Product(2, "Gadget", 20.0, 3, 1, supplierManagement); // £60 stock value
         inventory.addProduct(product1);
         inventory.addProduct(product2);
 
-        // Create order (simulate sale of 2 gadgets = £40)
-        Order order = new Order();
-        order.addProductToOrder(2, 2); // 2 gadgets ordered
+        // creating order (simulate sale of 2 gadgets = £40)
+        Order order = new Order(4, 789);
+        order.addProductsToOrder(product1, 2); // 2 gadgets ordered
+        order.addProductsToOrder(product2, 1);
 
         ArrayList<Order> orders = new ArrayList<>();
         orders.add(order);
 
-        // Act
+        // testing the calculation
         FinancialManagement report = new FinancialManagement(inventory, orders);
 
         double inventoryValue = report.calculateInventory();
         double salesRevenue = report.calculateSalesRevenue();
         double netIncome = salesRevenue - inventoryValue;
 
-        // Assert
-        assertEquals(110.0, inventoryValue, 0.01); // £50 + £60
+ 
+        assertEquals(4570.0, inventoryValue, 0.01); 
         assertEquals(40.0, salesRevenue, 0.01);     // 2 x £20
-        assertEquals(-70.0, netIncome, 0.01);       // loss scenario
+        assertEquals(-4530, netIncome, 0.01);       // loss scenario
     }
 }
 
-}
-}
