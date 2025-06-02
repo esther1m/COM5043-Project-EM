@@ -2,6 +2,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.*;
 
@@ -36,19 +37,38 @@ public class OrderTest {
         Supplier test_supplier = test_supplierManagement.defaultSupplier1;
         int supplierid_1 = test_supplier.getSupplierId();
       
-        Product test_product = new Product(0, "Test", 7.00, 80, supplierid_1, test_supplierManagement);
+        Product test_product = new Product("Test", 7.00, 80, supplierid_1, test_supplierManagement);
         test_order0.addProductsToOrder(test_product, 70);
 
         assertEquals(160, test_product.getProductQuantity());
         assertEquals("Order complete", test_order0.getStatus());
     }
-//incomplete
+//testing adding multiple products to one order
     @Test
     void testAddMultipleProductsToOrder(){
+        Order test_order2 = new Order(70, 553);
         int supplierid_1 = test_supplierManagement.defaultSupplier1.getSupplierId();
         int supplierid_2 = test_supplierManagement.defaultSupplier2.getSupplierId();
-        Product test_product = new Product(0, "Test", 7.00, 80, supplierid_1, test_supplierManagement);
-        Product test_product1 = new Product(1, "Test1", 7.00, 30, supplierid_1, test_supplierManagement);
-        Product test_product2 = new Product(2, "Test2", 6.00, 10, supplierid_2, test_supplierManagement);
+        Product test_product = new Product("Test", 7.00, 80, supplierid_1, test_supplierManagement);
+        Product test_product1 = new Product("Test1", 7.00, 30, supplierid_1, test_supplierManagement);
+        Product test_product2 = new Product("Test2", 6.00, 10, supplierid_2, test_supplierManagement);
+
+        test_order2.addProductsToOrder(test_product, 4);
+        test_order2.addProductsToOrder(test_product1, 1);
+        test_order2.addProductsToOrder(test_product2, 1);
+
+        assertEquals(76, test_product.getProductQuantity());
+        assertEquals(29, test_product1.getProductQuantity());
+        assertEquals(159, test_product2.getProductQuantity());
+        assertEquals("Order complete", test_order2.getStatus());
+
     }
+
+    @Test
+    void testOrderStatusAfterInvalidAdd() {
+        Order test_order1 = new Order(90, 679);
+        assertFalse(test_order1.addProductsToOrder(null, 0));
+        assertEquals("Failed to place order of null due to stock issues", test_order1.getStatus());
+}
+
 }

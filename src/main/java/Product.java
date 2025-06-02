@@ -1,6 +1,8 @@
 
 public class Product {
     //class Product, initalising the variables
+    private static int nextProductId = 0;
+
     private int productId;
     private String productName;
     private double productPrice;
@@ -11,14 +13,17 @@ public class Product {
     private SupplierManagement supplierManagement;
 
     //the constructor method for class Product
-    public Product (int productId, String productName, double productPrice, int productQuantity, int preferredSupplierID, SupplierManagement sm) {
-        this.productId = productId;
+    public Product (String productName, double productPrice, int productQuantity, int preferredSupplierID, SupplierManagement sm) {
+        
         this.productName = productName;
         this.productPrice = productPrice;
         this.productQuantity = productQuantity;
         this.preferredSupplierID = preferredSupplierID;
 
         supplierManagement = new SupplierManagement();
+
+        this.productId = nextProductId;
+        nextProductId++;
 
         this.supplierManagement = sm;
         Supplier supplier = new Supplier("default", 06326895432f, "email.email");
