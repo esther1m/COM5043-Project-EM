@@ -11,7 +11,7 @@ public class App {
     //Product product = new Product(0, user_input, 0, 0)
     InventoryService inventoryManagement = new InventoryService();
     Supplier supplier = new Supplier("Best Suppliers LTD", 075837825377f, "bestsuppliersltd@gmail.com");
-    SupplierManagement supplierManagement = new SupplierManagement();
+    SupplierService supplierManagement = new SupplierService();
 
     public void menu(){
         //user_input = null;
