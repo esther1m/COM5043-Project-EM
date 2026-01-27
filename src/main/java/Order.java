@@ -7,7 +7,7 @@ public class Order {
     int customerId;
     double totalCost;
     String status;
-    InventoryManagement inventoryManagement;
+
 
     public Order(int id, int customerId){
         this.id = id;
@@ -16,7 +16,7 @@ public class Order {
         totalCost = 0;
         productOrders = new HashMap<>();
         status = "Processing";
-        inventoryManagement = new InventoryManagement();
+
     }
 
     public boolean addProductsToOrder(Product product, int customerOrderQuantity){
@@ -50,11 +50,11 @@ public class Order {
     public String getStatus(){
         return status;
     }
-
+//revisit this logic
     public void getProductOrders(){
         for (int productId : productOrders.keySet()) {
-            Product product = inventoryManagement.getProductById(productId);
-            System.out.println("ID: " + productId + " | Name: "  + product.getProductName() + " | Price £" + product.getProductPrice() + " | Quantity: " + productOrders.entrySet());
+            //Product product = inventoryManagement.getProductById(productId);
+           // System.out.println("ID: " + productId + " | Name: "  + product.getProductName() + " | Price £" + product.getProductPrice() + " | Quantity: " + productOrders.entrySet());
         }
 
     }
