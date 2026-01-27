@@ -9,7 +9,7 @@ public class App {
     OrderProcessing orderProcessing = new  OrderProcessing();
     HashMap<Product, Integer> products;
     //Product product = new Product(0, user_input, 0, 0)
-    InventoryManagement inventoryManagement = new InventoryManagement();
+    InventoryService inventoryManagement = new InventoryService();
     Supplier supplier = new Supplier("Best Suppliers LTD", 075837825377f, "bestsuppliersltd@gmail.com");
     SupplierManagement supplierManagement = new SupplierManagement();
 
