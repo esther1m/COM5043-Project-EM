@@ -26,6 +26,8 @@ public class App {
             System.out.println("4. View Suppliers");
             //System.out.println("5. Edit Supplier Details");
             //System.out.println("6. View Financial Report");
+            System.out.println("5. View total inventory values");
+            System.out.println("6. Generate a Financial Report");
             System.out.println("7. Exit");
             System.out.println("Enter your choice: ");
             //user_input = scanner.nextLine();
