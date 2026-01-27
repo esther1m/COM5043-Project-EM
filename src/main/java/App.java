@@ -75,9 +75,11 @@ public class App {
                     double user_product_price = scanner.nextDouble();
                     System.out.println("What quantity do we currently have of the product in stock?");
                     int user_product_quantity = scanner.nextInt();
+                    System.out.print("What's the id of the preferred supplier for this product?");
+                    int user_product_supplier = scanner.nextInt();
                     scanner.nextLine();
 
-                    Product product = new Product(0, user_product_name, user_product_price, user_product_quantity);
+                    Product product = new Product(0, user_product_name, user_product_price, user_product_quantity, user_product_supplier, supplierManagement);
                     inventoryManagement.addProduct(product);
                     break;
                 case "2":
@@ -162,7 +164,7 @@ public class App {
                     System.out.println("What's the supplier id of the supplier you want to delete? ");
                     int user_input_supplierid = scanner.nextInt();
                     Supplier removing_supplier = supplierManagement.getSupplierById(user_input_supplierid);
-                    supplierManagement.deleteSupplierFromList(removing_supplier);
+                    supplierManagement.deleteSupplierFromList(user_input_supplierid);
                     System.out.println("Successfully delted supplier " + removing_supplier);
                     break;
                 case "4":
@@ -187,7 +189,7 @@ public class App {
             switch (user_input) {
             //view order history
                 case "1":
-                    System.out.println(orderProcessing.getOrders());
+                    orderProcessing.getOrders();
                     break;
             //view products
                 case "2":

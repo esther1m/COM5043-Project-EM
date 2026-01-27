@@ -43,5 +43,13 @@ public class InventoryService{
         }
     }
     
+    public double getTotalValue() {
+        double total = 0.0;
+        for (Product product : productsInventory.values()) {
+            total = total + (product.getProductPrice() * product.getProductQuantity());
+        }
+        return total;
+    }
+    
 }
 

@@ -38,11 +38,15 @@ public class Supplier {
         return supplierEmail;
     }
 
-    public ArrayList getSupplierOrderHistory(){
+    public ArrayList <Product> getSupplierOrderHistory(){
         return supplierOrderHistory;
     }
 
     //setter methods if the user wants to update the supplier details
+    public void setSupplierName(String name){
+        supplierName = name;
+    }
+
     public void setSupplierPhoneNumber(float phoneNumber){
         supplierPhoneNumber = phoneNumber;
     }
@@ -54,5 +58,11 @@ public class Supplier {
     //method to add a product to order history
     public void addOrderHistory(Product product){
         supplierOrderHistory.add(product);
+    }
+
+    //method to order stock
+    public void orderStock(Product product, int stock){
+        product.addStock(stock);
+        this.addOrderHistory(product);
     }
 }
