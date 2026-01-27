@@ -92,8 +92,8 @@ public class App {
                 case "3":
                     int user_input_productid2 = scanner.nextInt();
                     System.out.println("What's the product id of the product you want to delete? ");
-                    Product removing_product = inventoryManagement.getProductById(user_input_productid2);
-                    inventoryManagement.removeProduct(removing_product);
+                    //Product removing_product = inventoryManagement.getProductById(user_input_productid2);
+                    inventoryManagement.removeProduct(user_input_productid2);
                     break;
                 case "4":
                     System.out.println("Exiting... returning to the main menu");
@@ -193,10 +193,11 @@ public class App {
                 case "2":
                     System.out.println();
                     //System.out.println("ID |   Name    | Price | Quantity");
-                    for (int productId : inventoryManagement.productsInventory.keySet()) {
+                    /*for (int productId : inventoryManagement.productsInventory.keySet()) {
                         Product product = inventoryManagement.getProductById(productId);
                         System.out.println("ID: " + productId + " | Name: "  + product.getProductName() + " | Price £" + product.getProductPrice() + " | Quantity: " + product.getProductQuantity());
-                    }
+                    }*/
+                    inventoryManagement.getProducts();
                     productsSwitch();
                     break;
             //place an order

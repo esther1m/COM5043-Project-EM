@@ -2,10 +2,10 @@
 //class that handles the inventory management
 import java.util.HashMap;
 
-public class InventoryManagement{
+public class InventoryService{
     public HashMap <Integer, Product> productsInventory;
 
-    public InventoryManagement(){
+    public InventoryService(){
         productsInventory = new HashMap<>();
     }
 
@@ -20,9 +20,15 @@ public class InventoryManagement{
     }
 
     //removing products from the hashmap
-    public void removeProduct(Product product){
-        int id = product.getProductId();
-        productsInventory.remove(id);
+    public boolean removeProduct(int id){
+        if (productsInventory.containsKey(id)){
+            productsInventory.remove(id);
+            return true;
+        } else {
+            System.out.println("Product not found.");
+            return false;
+        }
+        
     }
 
     //allowing to search/return/get product from inventory by id:
@@ -30,8 +36,11 @@ public class InventoryManagement{
         return productsInventory.get(id);
     }
 
-    public HashMap <Integer, Product> getProducts(){
-        return productsInventory;
+    public void getProducts(){
+        for (int productId : productsInventory.keySet()) {
+            Product product = getProductById(productId);
+            System.out.println("ID: " + productId + " | Name: "  + product.getProductName() + " | Price £" + product.getProductPrice() + " | Quantity: " + product.getProductQuantity());
+        }
     }
     
 }
