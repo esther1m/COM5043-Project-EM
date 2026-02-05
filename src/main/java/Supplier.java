@@ -6,12 +6,13 @@ public class Supplier {
 
     private int supplierId;
     private String supplierName;
-    private float supplierPhoneNumber;
+    //unnecessatry additions can delete
+    private String supplierPhoneNumber;
     private String supplierEmail;
     private ArrayList <Product> supplierOrderHistory;
 
     //the constructor method for class Product
-    public Supplier(String supplierName, float supplierPhoneNumber, String supplierEmail){
+    public Supplier(String supplierName, String supplierPhoneNumber, String supplierEmail){
         this.supplierName = supplierName;
         this.supplierPhoneNumber = supplierPhoneNumber;
         this.supplierEmail = supplierEmail;
@@ -30,7 +31,7 @@ public class Supplier {
         return supplierName;
     }
 
-    public float getSupplierPhoneNumber(){
+    public String getSupplierPhoneNumber(){
         return supplierPhoneNumber;
     }
 
@@ -47,7 +48,7 @@ public class Supplier {
         supplierName = name;
     }
 
-    public void setSupplierPhoneNumber(float phoneNumber){
+    public void setSupplierPhoneNumber(String phoneNumber){
         supplierPhoneNumber = phoneNumber;
     }
 
