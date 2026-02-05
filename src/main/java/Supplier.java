@@ -61,7 +61,7 @@ public class Supplier {
         supplierOrderHistory.add(product);
     }
 
-    //method to order stock
+    //method to order stock - should probably put int service??
     public void orderStock(Product product, int stock){
         product.addStock(stock);
         this.addOrderHistory(product);
