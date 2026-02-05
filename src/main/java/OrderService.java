@@ -3,12 +3,12 @@ import java.util.*;
 public class OrderService {
     ArrayList <Order> orders;
     int nextOrderId;
-    InventoryManagement inventoryManagement;
+    InventoryService inventoryManagement;
 
     public OrderService(){
         orders = new ArrayList<>();
         nextOrderId = -1;
-        inventoryManagement = new InventoryManagement();
+       // inventoryManagement = new InventoryManagement();
     }
 
     public void placeOrder(int orderid, int customerid, HashMap<Product, Integer> products){
