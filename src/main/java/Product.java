@@ -1,7 +1,7 @@
 
 public class Product {
     //class Product, initalising the variables
-    private static int nextProductId = 0;
+    private int nextProductId = 0;
 
     private int productId;
     private String productName;
@@ -13,17 +13,20 @@ public class Product {
     
 
     //the constructor method for class Product
-    public Product (int productId, String productName, double productPrice, int productQuantity, int preferredSupplierID) {
-        this.productId = productId;
+    public Product (String productName, double productPrice, int productQuantity, int preferredSupplierID, int reorderQuantity, int reorderThreshold) {
+        productId = nextProductId;
+        nextProductId++;
         this.productName = productName;
         this.productPrice = productPrice;
         this.productQuantity = productQuantity;
         this.preferredSupplierID = preferredSupplierID;
+        this.reorderQuantity = reorderQuantity;
+        this.reorderThreshold = reorderThreshold;
 
-// move to supplier prefences??
+/*move to supplier prefences??
         reorderThreshold = 15;
         reorderQuantity = 150;
-        
+     */   
     }
 
     //getter methods, returns the variables of Product instance
@@ -42,9 +45,14 @@ public class Product {
     public int getProductQuantity(){
         return productQuantity;
     }
-
+/* 
     public void setProductQuantity(int quantity){
         this.productQuantity = quantity;
+    }*/
+
+    //setting the product's price
+    public void setPrice(double price) {
+        this.productPrice = price;
     }
 
     //adding stock to product
