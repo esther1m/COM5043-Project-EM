@@ -2,10 +2,10 @@
 //class that handles the inventory management
 import java.util.HashMap;
 
-public class InventoryManagement{
+public class InventoryService{
     public HashMap <Integer, Product> productsInventory;
 
-    public InventoryManagement(){
+    public InventoryService(){
         productsInventory = new HashMap<>();
     }
 
