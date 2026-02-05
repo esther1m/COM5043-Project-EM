@@ -33,7 +33,7 @@ public class App {
     public void productsMenu(){
         System.out.println("Please select an option:");
         System.out.println("1. Add Products");
-        System.out.println("2. Update Product quantity");
+        //System.out.println("2. Update Product quantity");
         System.out.println("3. Delete Product");
         System.out.println("4. Exit");
     }
@@ -63,13 +63,13 @@ public class App {
                     //inventoryManagement.addProduct(product);
                     break;
                 case "2":
-                    int user_input_productid = scanner.nextInt();
+                    /*int user_input_productid = scanner.nextInt();
                     System.out.println("What's the product id of the product you want to update the quantity for? ");
                     Product changing_product = inventoryManagement.getProductById(user_input_productid);
 
                     int user_input_quantity = scanner.nextInt();
                     System.out.println("What's the new quantity? ");
-                    changing_product.setProductQuantity(user_input_quantity);
+                    changing_product.setProductQuantity(user_input_quantity);*/
                     break;
                 case "3":
                     int user_input_productid2 = scanner.nextInt();
