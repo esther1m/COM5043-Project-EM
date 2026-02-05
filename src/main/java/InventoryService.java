@@ -2,15 +2,18 @@
 //class that handles the inventory management
 import java.util.HashMap;
 
-public class InventoryManagement{
+public class InventoryService{
     public HashMap <Integer, Product> productsInventory;
 
-    public InventoryManagement(){
+    public InventoryService(){
         productsInventory = new HashMap<>();
     }
 
     //adding products to the hashmap, only if not already existing
     public boolean addProduct(Product product){
+        if (product == null) {
+            return false;
+        }
         int id = product.getProductId();
         if (productsInventory.containsKey(id)){
             return false;

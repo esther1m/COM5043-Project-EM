@@ -22,6 +22,7 @@ public class Order {
     public boolean addProductsToOrder(Product product, int customerOrderQuantity){
         if (product == null){
             System.out.println("Cannot add null product to order");
+            status = "Failed to place order of " + product + " due to stock issues";
             return false;
         }
         int product_id = product.getProductId();

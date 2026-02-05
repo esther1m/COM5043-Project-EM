@@ -1,6 +1,8 @@
 
 public class Product {
     //class Product, initalising the variables
+    private static int nextProductId = 0;
+
     private int productId;
     private String productName;
     private double productPrice;
