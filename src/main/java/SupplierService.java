@@ -16,7 +16,7 @@ public class SupplierService {
 
     //allowing for suppliers to be added to the array
     public boolean addSupplierToList(Supplier supplier){
-        if (!supplierList.contains(supplier)){
+        if (!supplierList.contains(supplier) && supplier != null){
             supplierList.add(supplier);
             return true;
         }
