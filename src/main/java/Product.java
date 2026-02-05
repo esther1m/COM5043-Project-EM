@@ -1,6 +1,8 @@
 
 public class Product {
     //class Product, initalising the variables
+    private static int nextProductId = 0;
+
     private int productId;
     private String productName;
     private double productPrice;
@@ -8,21 +10,17 @@ public class Product {
     private int preferredSupplierID;
     private int reorderThreshold;
     private int reorderQuantity;
-    private SupplierManagement supplierManagement;
+    
 
     //the constructor method for class Product
-    public Product (int productId, String productName, double productPrice, int productQuantity, int preferredSupplierID, SupplierManagement sm) {
+    public Product (int productId, String productName, double productPrice, int productQuantity, int preferredSupplierID) {
         this.productId = productId;
         this.productName = productName;
         this.productPrice = productPrice;
         this.productQuantity = productQuantity;
         this.preferredSupplierID = preferredSupplierID;
 
-        supplierManagement = new SupplierManagement();
-
-        this.supplierManagement = sm;
-        Supplier supplier = new Supplier("default", 06326895432f, "email.email");
-        supplierManagement.addSupplierToList(supplier);
+// move to supplier prefences??
         reorderThreshold = 15;
         reorderQuantity = 150;
         
@@ -55,7 +53,7 @@ public class Product {
             productQuantity = productQuantity + amount;
         }
     }
-
+//revisit this logic
     //removing stock from product, checking there's enough stock and reordering if not
     public void removeStock(int amount){
         if (amount > 0 && productQuantity >= amount) {
@@ -65,8 +63,8 @@ public class Product {
         }
         if (productQuantity < reorderThreshold) {
             System.out.println(productName + " is low stock.");
-            Supplier supplier = supplierManagement.getSupplierById(preferredSupplierID);
-            supplier.orderStock(this, reorderQuantity);
+            //Supplier supplier = supplierManagement.getSupplierById(preferredSupplierID);
+            //supplier.orderStock(this, reorderQuantity);
         }
     }
 }
