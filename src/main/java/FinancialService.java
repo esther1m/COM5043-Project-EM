@@ -1,20 +1,20 @@
 import java.util.ArrayList;
 import java.util.Map;
 
-public class FinancialManagement {
-    private InventoryManagement inventory;
+public class FinancialService {
+   // private InventoryService inventory;
     private ArrayList<Order> orders;
-    private OrderProcessing orderProcessing;
+    private OrderService orderProcessing;
     double total;
 
-    public FinancialManagement(InventoryManagement inventory, ArrayList <Order> orders){
-        this.inventory = inventory;
+    public FinancialService( ArrayList <Order> orders){
+       // this.inventory = inventory;
         this.orders = orders;
     }
 
     public double calculateInventory(){
         total = 0.0;
-        total = inventory.getTotalValue();
+       // total = inventory.getTotalValue();
         return total;
     }
 

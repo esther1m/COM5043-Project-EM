@@ -217,7 +217,7 @@ public class App {
                     System.out.println("Total Inventory Value: £" + inventoryManagement.getTotalValue());
                     break;
                 case "6":
-                    FinancialManagement report = new FinancialManagement(inventoryManagement, orderProcessing.orders);
+                    FinancialService report = new FinancialService(orderProcessing.orders);
                     report.generateReport();;
             //exit
                 case "7":
