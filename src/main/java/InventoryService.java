@@ -11,6 +11,9 @@ public class InventoryService{
 
     //adding products to the hashmap, only if not already existing
     public boolean addProduct(Product product){
+        if (product == null) {
+            return false;
+        }
         int id = product.getProductId();
         if (productsInventory.containsKey(id)){
             return false;

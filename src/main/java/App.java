@@ -14,9 +14,6 @@ public class App {
     SupplierService supplierManagement = new SupplierService();
 
     public void menu(){
-        //user_input = null;
-
-        //while (user_input == null) {
             System.out.println("Welcome to the Warehouse Management System.");
             System.out.println("Please select an option:");
             System.out.println("1. View Order History");
@@ -31,25 +28,6 @@ public class App {
             System.out.println("7. Exit");
             System.out.println("Enter your choice: ");
             //user_input = scanner.nextLine();
-
-           /*  if (user_input == "1"){
-                orderProcessing.getOrders();
-            } if (user_input == "2"){
-                inventoryManagement.getProducts();
-            } if (user_input == "3") {
-                int user_id = scanner.nextInt();
-                System.out.println("Please Enter your customer id. If you have never shopper with us before, please enter the ID of your choosing:");
-                int user_add_product = scanner.nextInt();
-
-                while (user_add_product != 1) {
-                    int user_add = scanner.nextInt();
-                    System.out.println("Please place your order using the product ids to add them to your order. Press 1 to checkout.");
-                    Product product = user_add.
-                    System.out.println("What's the quantity of " + user_add);
-                }
-                orderProcessing.placeOrder(0, user_id, null);
-            }*/
-        //}
     }
 
     public void productsMenu(){
@@ -196,11 +174,7 @@ public class App {
             //view products
                 case "2":
                     System.out.println();
-                    //System.out.println("ID |   Name    | Price | Quantity");
-                    /*for (int productId : inventoryManagement.productsInventory.keySet()) {
-                        Product product = inventoryManagement.getProductById(productId);
-                        System.out.println("ID: " + productId + " | Name: "  + product.getProductName() + " | Price £" + product.getProductPrice() + " | Quantity: " + product.getProductQuantity());
-                    }*/
+
                     inventoryManagement.getProducts();
                     productsSwitch();
                     break;
@@ -238,8 +212,15 @@ public class App {
                 }
                     supplierSwitch();
                     break;
-            //exit
                 case "5":
+                    System.out.println();
+                    System.out.println("Total Inventory Value: £" + inventoryManagement.getTotalValue());
+                    break;
+                case "6":
+                    FinancialManagement report = new FinancialManagement(inventoryManagement, orderProcessing.orders);
+                    report.generateReport();;
+            //exit
+                case "7":
                     System.out.println("Exiting the system...");
                     System.out.println("Have a good day :)");
                     active = false;
