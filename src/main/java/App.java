@@ -6,11 +6,12 @@ public class App {
 
     String user_input;
     Scanner scanner = new Scanner(System.in);
-    OrderProcessing orderProcessing = new  OrderProcessing();
+    OrderService orderProcessing = new  OrderService();
     HashMap<Product, Integer> products;
-    InventoryManagement inventoryManagement = new InventoryManagement();
+    //Product product = new Product(0, user_input, 0, 0)
+    InventoryService inventoryManagement = new InventoryService();
     Supplier supplier = new Supplier("Best Suppliers LTD", 075837825377f, "bestsuppliersltd@gmail.com");
-    SupplierManagement supplierManagement = new SupplierManagement();
+    SupplierService supplierManagement = new SupplierService();
 
     public void menu(){
             System.out.println("Welcome to the Warehouse Management System.");
@@ -22,9 +23,9 @@ public class App {
             System.out.println("4. View Suppliers");
             //System.out.println("5. Edit Supplier Details");
             //System.out.println("6. View Financial Report");
-            System.out.println("7. View total inventory values");
-            System.out.println("8. Generate a Financial Report");
-            System.out.println("9. Exit");
+            System.out.println("5. View total inventory values");
+            System.out.println("6. Generate a Financial Report");
+            System.out.println("7. Exit");
             System.out.println("Enter your choice: ");
             //user_input = scanner.nextLine();
     }
@@ -36,6 +37,8 @@ public class App {
         System.out.println("3. Delete Product");
         System.out.println("4. Exit");
     }
+
+    //revisit logic
 
     public void productsSwitch(){
         boolean check = true;
@@ -56,8 +59,8 @@ public class App {
                     int user_product_supplier = scanner.nextInt();
                     scanner.nextLine();
 
-                    Product product = new Product(user_product_name, user_product_price, user_product_quantity, user_product_supplier, supplierManagement);
-                    inventoryManagement.addProduct(product);
+                    //Product product = new Product(0, user_product_name, user_product_price, user_product_quantity, user_product_supplier, supplierManagement);
+                    //inventoryManagement.addProduct(product);
                     break;
                 case "2":
                     int user_input_productid = scanner.nextInt();
