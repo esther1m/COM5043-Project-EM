@@ -10,7 +10,7 @@ public class App {
     HashMap<Product, Integer> products;
     //Product product = new Product(0, user_input, 0, 0)
     InventoryService inventoryManagement = new InventoryService();
-    Supplier supplier = new Supplier("Best Suppliers LTD", 075837825377f, "bestsuppliersltd@gmail.com");
+    Supplier supplier = new Supplier("Best Suppliers LTD", "075837825377", "bestsuppliersltd@gmail.com");
     SupplierService supplierManagement = new SupplierService();
 
     public void menu(){
@@ -110,7 +110,7 @@ public class App {
                     System.out.println("What's the Supplier called?");
                     String user_suplier_name = scanner.nextLine();
                     System.out.println("What's the supplier's contact number?");
-                    float user_supplier_phone_number = scanner.nextFloat();
+                    String user_supplier_phone_number = scanner.nextLine();
                     System.out.println("What's the supplier's email?");
                     String user_supplier_email = scanner.nextLine();
                     scanner.nextLine();
@@ -127,7 +127,7 @@ public class App {
                     String answer1 = scanner.nextLine();
                     if (answer1 == "Y"){
                         System.out.println("Enter the supplier's new phone number: ");
-                        float new_number = scanner.nextFloat();
+                        String new_number = scanner.nextLine();
                         changing_supplier.setSupplierPhoneNumber(new_number);
                         System.out.println("Contact number changed: " + new_number);
                     }
