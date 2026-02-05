@@ -1,11 +1,11 @@
 import java.util.*;
 
-public class OrderProcessing {
+public class OrderService {
     ArrayList <Order> orders;
     int nextOrderId;
     InventoryManagement inventoryManagement;
 
-    public OrderProcessing(){
+    public OrderService(){
         orders = new ArrayList<>();
         nextOrderId = -1;
         inventoryManagement = new InventoryManagement();
