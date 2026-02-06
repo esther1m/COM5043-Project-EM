@@ -12,7 +12,8 @@ public class OrderService {
     }
 
     public void placeOrder(int orderid, int customerid, HashMap<Product, Integer> products){
-        Order order1 = new Order(orderid, customerid);
+        //revisit logic
+        Order order1 = new Order(customerid);
 
         for (Map.Entry<Product, Integer> entry : products.entrySet()) {
             Product product = entry.getKey();
@@ -31,7 +32,7 @@ public class OrderService {
         }
         return null;
     }
-
+/* 
     public void cancelOrder(int orderid){
         Order findOrder = getOrderbyId(orderid);
         
@@ -47,7 +48,7 @@ public class OrderService {
                 orders.remove(findOrder);
             }
         }
-    }
+    }*/
 
 
     public int getNextOrderID(){
@@ -55,6 +56,7 @@ public class OrderService {
     }
 
     public void getOrders(){
+        /* 
         for (Order order : orders) {
     
             System.out.println("ID: " + order.getId());
@@ -68,6 +70,6 @@ public class OrderService {
             System.out.println( " | Total Cost £" + order.getTotalCost());
             System.out.println(" | Status: " + order.getStatus());
 
-        }
+        }*/
     }
 }
