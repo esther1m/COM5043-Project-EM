@@ -2,15 +2,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Order {
-    int id;
-    HashMap<Integer, Integer> productOrders;
-    int customerId;
-    double totalCost;
-    String status;
+    private int nextOrderId = 0;
+    private int id;
+    private HashMap<Integer, Integer> productOrders;
+    private int customerId;
+    private double totalCost;
+    private String status;
 
 
-    public Order(int id, int customerId){
-        this.id = id;
+    public Order(int customerId){
+        id = nextOrderId;
+        nextOrderId++;
+
         this.customerId = customerId;
 
         totalCost = 0;
