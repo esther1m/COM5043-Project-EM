@@ -50,6 +50,7 @@ public class Product {
     public int getProductQuantity(){
         return productQuantity;
     }
+    
 /* 
     public void setProductQuantity(int quantity){
         this.productQuantity = quantity;
