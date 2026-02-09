@@ -4,7 +4,7 @@ import java.util.HashMap;
 public class Order {
     private int nextOrderId = 0;
     private int id;
-    private HashMap<Integer, Integer> productOrders;
+    private HashMap<Integer, Integer> productsOrdered;
     private int customerId;
     private double totalCost;
     private String status;
@@ -17,7 +17,7 @@ public class Order {
         this.customerId = customerId;
 
         totalCost = 0;
-        productOrders = new HashMap<>();
+        productsOrdered = new HashMap<>();
         status = "Processing";
 
     }
@@ -25,14 +25,14 @@ public class Order {
     public boolean addProductsToOrder(Product product, int customerOrderQuantity){
         if (product == null){
             System.out.println("Cannot add null product to order");
-            status = "Failed to place order of " + product + " due to stock issues";
+            status = "Failed to place order of " + product;
             return false;
         }
         int product_id = product.getProductId();
 
         if (product.getProductQuantity() >= customerOrderQuantity){
             product.removeStock(customerOrderQuantity);
-            productOrders.put(product_id, customerOrderQuantity);
+            productsOrdered.put(product_id, customerOrderQuantity);
             status = "Pending";
             totalCost = totalCost + (product.getProductPrice() * customerOrderQuantity);
         } else {
@@ -54,14 +54,14 @@ public class Order {
     public String getStatus(){
         return status;
     }
-//revisit this logic
+/*revisit this logic
     public void getProductOrders(){
-        for (int productId : productOrders.keySet()) {
+        for (int productId : productsOrdered.keySet()) {
             //Product product = inventoryManagement.getProductById(productId);
            // System.out.println("ID: " + productId + " | Name: "  + product.getProductName() + " | Price £" + product.getProductPrice() + " | Quantity: " + productOrders.entrySet());
         }
 
-    }
+    }*/
 
     
 }
