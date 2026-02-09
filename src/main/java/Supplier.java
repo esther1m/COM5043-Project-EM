@@ -17,12 +17,16 @@ public class Supplier {
         this.supplierPhoneNumber = supplierPhoneNumber;
         this.supplierEmail = supplierEmail;
 
-        this.supplierId = nextSupplierId;
-        nextSupplierId++;
+        this.supplierId = getNextSupplierID();
         supplierOrderHistory = new ArrayList<>();
     }
 
     //getter methods, returns the variables of Supplier Instance
+    public int getNextSupplierID(){
+        nextSupplierId = nextSupplierId++;
+        return nextSupplierId;
+    }
+
     public int getSupplierId(){
         return supplierId;
     }

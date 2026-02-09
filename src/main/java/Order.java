@@ -11,8 +11,7 @@ public class Order {
 
 
     public Order(int customerId){
-        id = nextOrderId;
-        nextOrderId++;
+        id = getNextOrderID();
 
         this.customerId = customerId;
 
@@ -41,6 +40,11 @@ public class Order {
         }
         status = "Order complete";
         return true;
+    }
+
+    public int getNextOrderID(){
+        nextOrderId = nextOrderId++;
+        return nextOrderId;
     }
 
     public int getId() {

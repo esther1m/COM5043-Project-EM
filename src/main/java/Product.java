@@ -14,8 +14,7 @@ public class Product {
 
     //the constructor method for class Product
     public Product (String productName, double productPrice, int productQuantity, int preferredSupplierID, int reorderQuantity, int reorderThreshold) {
-        productId = nextProductId;
-        nextProductId++;
+        productId = getNextProductID();
         this.productName = productName;
         this.productPrice = productPrice;
         this.productQuantity = productQuantity;
@@ -30,6 +29,12 @@ public class Product {
     }
 
     //getter methods, returns the variables of Product instance
+
+    private int getNextProductID(){
+        nextProductId = nextProductId++;
+        return nextProductId;
+    }
+
     public int getProductId(){
         return productId;
     }

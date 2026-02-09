@@ -200,7 +200,7 @@ public class App {
                             products.put(product, user_quantity);
                         }
                     }
-                        orderProcessing.placeOrder(user_order_id, user_id, products);
+                        orderProcessing.placeOrder( user_id, products);
                     break;
 
             //view suppliers
