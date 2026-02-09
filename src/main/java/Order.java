@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Order {
-    private int nextOrderId = 0;
+    private static int nextOrderId = 0;
     private int id;
     private HashMap<Integer, Integer> productsOrdered;
     private int customerId;

@@ -1,7 +1,7 @@
 
 public class Product {
     //class Product, initalising the variables
-    private int nextProductId = 0;
+    private static int nextProductId = 0;
 
     private int productId;
     private String productName;

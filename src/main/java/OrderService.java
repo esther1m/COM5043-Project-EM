@@ -1,15 +1,13 @@
 import java.util.*;
 
 public class OrderService {
-    ArrayList <Order> orders;
-    int nextOrderId = 0;
-    int id;
-    InventoryService inventoryManagement;
+    public ArrayList <Order> orders;
+    private static int nextOrderId = 0;
+    private int id;
+    private InventoryService inventoryManagement;
 
     public OrderService(){
         orders = new ArrayList<>();
-        
-       // inventoryManagement = new InventoryManagement();
     }
 
     public void placeOrder( int customerid, HashMap<Product, Integer> products){
