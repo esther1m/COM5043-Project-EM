@@ -12,11 +12,13 @@ public class InventoryService{
     //adding products to the hashmap, only if not already existing
     public boolean addProduct(Product product){
         int id = product.getProductId();
+       // int quantity = product.getProductQuantity();
         if (productsInventory.containsKey(id)){
             return false;
+        } else {
+            productsInventory.put(id, product);
+            return true;
         }
-        productsInventory.put(id,product);
-        return true;
     }
 
     //removing products from the hashmap
@@ -30,7 +32,7 @@ public class InventoryService{
         }
         
     }
-
+    //revisit logic
     //allowing to search/return/get product from inventory by id:
     public Product getProductById(int id){
         return productsInventory.get(id);
