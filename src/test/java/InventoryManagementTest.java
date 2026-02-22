@@ -23,7 +23,7 @@ public class InventoryManagementTest {
         test_product2 = new Product("Third test", 30.00, 0, supplierid_2, 70, 5);
         
 
-        test_inventory.addProduct(test_product1);
+        //test_inventory.addProduct(test_product1);
     }
 
     //testing that the addProduct function works as expected by checking the id and name against the hashmap
@@ -114,6 +114,7 @@ public class InventoryManagementTest {
     void testgetTotalValue(){
         test_inventory.addProduct(test_product0);
         test_inventory.addProduct(test_product1);
+    
         double total = test_inventory.getTotalValue();
         assertEquals(390, total);
 
