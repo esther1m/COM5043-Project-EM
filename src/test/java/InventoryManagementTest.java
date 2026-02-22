@@ -91,6 +91,15 @@ public class InventoryManagementTest {
     void testRemovalNonexistentProduct(){
         assertFalse(test_inventory.removeProduct(999));
     }
+
+     //testing system won't throw exception when removing when inventory empty(){
+     @Test
+     void testRemoveProduct_NoException(){
+        assertDoesNotThrow(() -> test_inventory.removeProduct(1));
+     }   
+     
+
+
 /* 
     //testing the system returns null for nonexistent id by checking for null value
     @Test
@@ -127,6 +136,15 @@ public class InventoryManagementTest {
         double total = test_inventory.getTotalValue();
         assertEquals(0, total);
 
+    }
+
+    //checking that a stock change is reflected in inventory value
+    @Test
+    void testgetTotalValue_newStock(){
+        test_inventory.addProduct(test_product0);
+        test_product0.addStock(40);
+
+        assertEquals(270, test_inventory.getTotalValue());
     }
 
 }
