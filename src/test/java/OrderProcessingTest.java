@@ -97,4 +97,16 @@ public class OrderProcessingTest {
 
     }
 
+    //testing order incrementing works 
+    //should return true
+    @Test
+    void testPlaceAnOrder_uniqueIds(){
+        int id1 = test_op.getNextOrderID();
+        int id2 = test_op.getNextOrderID();
+
+        assertNotEquals(id1, id2);
+    }
+
+    
+
 }
