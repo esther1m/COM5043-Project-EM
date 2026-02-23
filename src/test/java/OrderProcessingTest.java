@@ -77,7 +77,7 @@ public class OrderProcessingTest {
         int orderId2 = (test_op.getNextOrderID() - 1);
         Order placed2= test_op.getOrderbyId(orderId2);
         assertNotNull(placed2);
-        assertEquals("Failed to place order of " + test_product1.getProductName() + " due to stock issues", placed.getStatus());
+        assertEquals("Failed to place order of " + test_product1.getProductName() + " due to stock issues", placed2.getStatus());
 
         assertEquals(390, test_inventory.getTotalValue());
     }
@@ -107,6 +107,6 @@ public class OrderProcessingTest {
         assertNotEquals(id1, id2);
     }
 
-    
+
 
 }
