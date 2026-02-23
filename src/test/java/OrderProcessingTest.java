@@ -74,10 +74,27 @@ public class OrderProcessingTest {
         //products.put(test_product0, 100);
         test_op.placeOrder(4797, products);
 
-        int orderId = (test_op.getNextOrderID() - 1);
-        Order placed = test_op.getOrderbyId(orderId);
-        assertNotNull(placed);
-        assertEquals("Failed to place order of " + product + " due to stock issues", placed.getStatus());
+        int orderId2 = (test_op.getNextOrderID() - 1);
+        Order placed2= test_op.getOrderbyId(orderId2);
+        assertNotNull(placed2);
+        assertEquals("Failed to place order of " + test_product1.getProductName() + " due to stock issues", placed.getStatus());
+
+        assertEquals(390, test_inventory.getTotalValue());
+    }
+
+    //testing the system calculates the total of an order correctly
+    @Test
+    void testPlaceAnOrder_totalCost(){
+        products.put(test_product1, 5);
+        products.put(test_product0, 10);
+        test_op.placeOrder(375, products);
+
+        int orderId3 = (test_op.getNextOrderID() - 1);
+        Order placed3 = test_op.getOrderbyId(orderId3);
+
+        assertNotNull(placed3);
+        assertEquals(60, placed3.getTotalCost());
+
     }
 
 }
