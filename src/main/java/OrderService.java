@@ -52,7 +52,7 @@ public class OrderService {
 
 
     public int getNextOrderID(){
-        nextOrderId = nextOrderId++;
+        nextOrderId = nextOrderId+1;
         return nextOrderId;
     }
 

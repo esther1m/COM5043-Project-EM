@@ -43,7 +43,7 @@ public class Order {
     }
 
     public int getNextOrderID(){
-        nextOrderId = nextOrderId++;
+        nextOrderId = nextOrderId+1;
         return nextOrderId;
     }
 
