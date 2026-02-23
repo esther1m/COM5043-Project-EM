@@ -28,6 +28,9 @@ public class OrderProcessingTest {
         products = new HashMap<>();
         test_product0 = new Product("test", 3.00, 50, supplierid, 50, 15);
         test_product1 = new Product("Second test", 6.00, 40, supplierid, 60, 20);
+
+        test_inventory.addProduct(test_product0);
+        test_inventory.addProduct(test_product1);
     }
 /* 
     @Test
@@ -52,8 +55,6 @@ public class OrderProcessingTest {
     @Test
     void testPlaceAnOrder(){
         //int product_id = product.getProductId();
-        test_inventory.addProduct(test_product0);
-        test_inventory.addProduct(test_product1);
         assertEquals(390, test_inventory.getTotalValue());
         products.put(test_product1, 5);
         products.put(test_product0, 10);
@@ -64,6 +65,19 @@ public class OrderProcessingTest {
         Order placed = test_op.getOrderbyId(orderId);
         assertNotNull(placed);
         assertEquals("Order complete", placed.getStatus());
+    }
+
+    //testing the system doesn't allow ordering of a product when insufficient stock
+    @Test
+    void testPlaceAnOrder_noStock(){
+        products.put(test_product1, 51);
+        //products.put(test_product0, 100);
+        test_op.placeOrder(4797, products);
+
+        int orderId = (test_op.getNextOrderID() - 1);
+        Order placed = test_op.getOrderbyId(orderId);
+        assertNotNull(placed);
+        assertEquals("Failed to place order of " + product + " due to stock issues", placed.getStatus());
     }
 
 }
