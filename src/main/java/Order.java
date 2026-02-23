@@ -35,7 +35,7 @@ public class Order {
             status = "Pending";
             totalCost = totalCost + (product.getProductPrice() * customerOrderQuantity);
         } else {
-            status = "Failed to place order of " + product + " due to stock issues";
+            status = "Failed to place order of " + product.getProductName() + " due to stock issues";
             return false;
         }
         status = "Order complete";
