@@ -8,12 +8,14 @@ public class Order {
     private int customerId;
     private double totalCost;
     private String status;
+    private InventoryService inventory;
 
 
-    public Order(int customerId, int orderId){
+    public Order(int customerId, int orderId, InventoryService inventory){
         //id = getNextOrderID();
 
         this.customerId = customerId;
+        this.inventory = inventory;
 
         totalCost = 0;
         productsOrdered = new HashMap<>();
