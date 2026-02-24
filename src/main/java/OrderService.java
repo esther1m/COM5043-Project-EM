@@ -2,7 +2,7 @@ import java.util.*;
 
 public class OrderService {
     public ArrayList <Order> orders;
-    private static int nextOrderId = 0;
+    private int nextOrderId = 0;
     private int orderid;
     private InventoryService inventoryManagement;
 
@@ -52,8 +52,8 @@ public class OrderService {
 
 
     public int getNextOrderID(){
-        nextOrderId = nextOrderId+1;
-        return nextOrderId;
+       // nextOrderId = nextOrderId+1;
+        return nextOrderId++;
     }
 
     public void getOrders(){
