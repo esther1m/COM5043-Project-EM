@@ -6,12 +6,14 @@ public class App {
 
     String user_input;
     Scanner scanner = new Scanner(System.in);
-    OrderService orderProcessing = new  OrderService();
+    
     HashMap<Product, Integer> products;
     //Product product = new Product(0, user_input, 0, 0)
-    InventoryService inventoryManagement = new InventoryService();
-    Supplier supplier = new Supplier("Best Suppliers LTD", "075837825377", "bestsuppliersltd@gmail.com");
     SupplierService supplierManagement = new SupplierService();
+    InventoryService inventoryManagement = new InventoryService(supplierManagement);
+    OrderService orderProcessing = new  OrderService(inventoryManagement);
+    Supplier supplier = new Supplier("Best Suppliers LTD", "075837825377", "bestsuppliersltd@gmail.com");
+    
 
     public void menu(){
             System.out.println("Welcome to the Warehouse Management System.");

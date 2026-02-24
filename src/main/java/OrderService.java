@@ -6,14 +6,15 @@ public class OrderService {
     private int orderid;
     private InventoryService inventoryManagement;
 
-    public OrderService(){
+    public OrderService(InventoryService inventory){
         orders = new ArrayList<>();
+        this.inventoryManagement = inventory;
     }
 
     public void placeOrder( int customerid, HashMap<Product, Integer> products){
         orderid = getNextOrderID();
         //revisit logic
-        Order order1 = new Order(customerid, orderid);
+        Order order1 = new Order(customerid, orderid, inventoryManagement);
         
         for (Map.Entry<Product, Integer> entry : products.entrySet()) {
             Product product = entry.getKey();

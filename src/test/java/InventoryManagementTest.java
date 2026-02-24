@@ -13,8 +13,9 @@ public class InventoryManagementTest {
   
     @BeforeEach
     void setup(){
-        test_inventory = new InventoryService();
         test_supplierService = new SupplierService();
+        test_inventory = new InventoryService(test_supplierService);
+        
 
         int supplierid_1 = test_supplierService.defaultSupplier1.getSupplierId();
         int supplierid_2 = test_supplierService.defaultSupplier2.getSupplierId();
