@@ -1,4 +1,7 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -6,15 +9,18 @@ public class ProductTest {
     
     Product test_product1;
     int test_product1_checkQuantity;
-    SupplierManagement supplierManagement;
+    SupplierService supplierManagement;
     Supplier supplier;
+    int supplierId;
 
     @BeforeEach
     void setup(){
-        supplier = new Supplier("test", 04678563567f, "email@test.com");
-        supplierManagement = new SupplierManagement();
+        supplier = new Supplier("test", "04678563567", "email@test.com");
+        supplierManagement = new SupplierService();
         supplierManagement.addSupplierToList(supplier);
-        test_product1 = new Product("Test", 5.70, 150,0, supplierManagement);
+
+        supplierId = supplier.getSupplierId();
+        test_product1 = new Product("Test", 5.70, 150,supplierId, 50, 20);
         
     }
 
@@ -28,6 +34,13 @@ public class ProductTest {
         assertEquals("Test", test_product1_checkname);
         assertEquals(5.70, test_product1_checkprice);
         assertEquals(150, test_product1_checkQuantity);
+    }
+
+    //checking each product has unique object()
+    @Test
+    void testUniqueIds(){
+        Product test_product0 = new Product("test", 3.00, 50,supplierId , 50, 15);
+        assertNotEquals(test_product0.getProductId(), test_product1.getProductId());
     }
 
     //checking if addStock increases the quantity by asserting equals
@@ -73,10 +86,27 @@ public class ProductTest {
     @Test
     void testRemoveZeroStock(){
 
-        test_product1.removeStock(100);
+        test_product1.removeStock(150);
         test_product1.removeStock(10);
         test_product1_checkQuantity = test_product1.getProductQuantity();
 
-        assertEquals(40, test_product1_checkQuantity);
+        assertEquals(0, test_product1_checkQuantity);
+    }
+
+    //testing setPrice updates correctly
+    @Test
+    void testSetPrice (){
+        test_product1.setPrice(6.00);
+        assertEquals(6.00, test_product1.getProductPrice());
+    }
+
+    //checking low stock logic
+    @Test
+    void testLowStockAlert (){
+        test_product1.removeStock(131);
+
+        assertEquals(19, test_product1.getProductQuantity());
+
+
     }
 }
