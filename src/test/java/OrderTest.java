@@ -22,13 +22,13 @@ public class OrderTest {
         test_supplierManagement = new SupplierService();
         test_supplier1 = new Supplier("test", "07875432578", "email@email.com");
         test_supplierManagement.addSupplierToList(test_supplier1);
-        test_inventory = new InventoryService();
+        test_inventory = new InventoryService(test_supplierManagement);
 
         int supplierid = test_supplier1.getSupplierId();
 
         test_product0 = new Product("test", 3.00, 50, supplierid, 50, 15);
         test_product1 = new Product("Second test", 6.00, 40, supplierid, 60, 20);
-        testOS = new OrderService();
+        testOS = new OrderService(test_inventory);
         int orderid = testOS.getNextOrderID();
         test_order0 = new Order(6786, orderid, test_inventory);
     }

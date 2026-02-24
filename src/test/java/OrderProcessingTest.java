@@ -20,9 +20,10 @@ public class OrderProcessingTest {
   
     @BeforeEach
     void setup (){
-        test_inventory = new InventoryService();
         test_sm = new SupplierService();
-        test_op = new OrderService();
+        test_inventory = new InventoryService(test_sm);
+        
+        test_op = new OrderService(test_inventory);
         test_supplier = new Supplier("test", "087472037485", "email@email.com");
         int supplierid = test_supplier.getSupplierId();
         products = new HashMap<>();

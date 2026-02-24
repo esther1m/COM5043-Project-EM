@@ -50,6 +50,17 @@ public class Product {
     public int getProductQuantity(){
         return productQuantity;
     }
+
+    public int getReorderQuantity(){
+        return reorderQuantity;
+    }
+    public int getReorderThreshold(){
+        return reorderThreshold;
+    }
+
+    public int getPreferredSupplierId(){
+        return preferredSupplierID;
+    }
     
 /* 
     public void setProductQuantity(int quantity){

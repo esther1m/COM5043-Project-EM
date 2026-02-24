@@ -4,9 +4,11 @@ import java.util.HashMap;
 
 public class InventoryService{
     public HashMap <Integer, Product> productsInventory;
+    private SupplierService supplierService;
 
-    public InventoryService(){
+    public InventoryService(SupplierService suppplierService){
         productsInventory = new HashMap<>();
+        this.supplierService = supplierService;
     }
 
     //adding products to the hashmap, only if not already existing
@@ -54,6 +56,22 @@ public class InventoryService{
             total = total + (product.getProductPrice() * product.getProductQuantity());
         }
         return total;
+    }
+
+    public boolean reorderStock(int productId){
+        Product product1 = getProductById(productId);
+        int reorderThreshold = product1.getReorderThreshold();
+        int reorderAmount = product1.getReorderQuantity();
+       
+        if (product1.getProductQuantity() < reorderThreshold){
+            Supplier supplier = supplierService.getSupplierById(product1.getPreferredSupplierId());
+            if (supplier != null){
+                supplier.orderStock(product1, reorderAmount);
+            } else {
+                return false;
+            }
+        }
+        return true;
     }
     
 }
