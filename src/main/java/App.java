@@ -219,6 +219,7 @@ public class App {
                 case "6":
                     FinancialService report = new FinancialService(orderProcessing.orders);
                     report.generateReport();;
+                    break;
             //exit
                 case "7":
                     System.out.println("Exiting the system...");
