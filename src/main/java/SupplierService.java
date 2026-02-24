@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class SupplierService {
-    ArrayList <Supplier> supplierList;
+    public ArrayList <Supplier> supplierList;
     Supplier defaultSupplier1;
     Supplier defaultSupplier2;
 
