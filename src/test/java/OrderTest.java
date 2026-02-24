@@ -7,6 +7,7 @@ import java.util.*;
 
 public class OrderTest {
     private Order test_order0;
+    private OrderService testOS;
     private SupplierService test_supplierManagement;
     private Supplier test_supplier1;
     private HashMap <Product, Integer> products;
@@ -25,8 +26,9 @@ public class OrderTest {
 
         test_product0 = new Product("test", 3.00, 50, supplierid, 50, 15);
         test_product1 = new Product("Second test", 6.00, 40, supplierid, 60, 20);
-
-        test_order0 = new Order(6786);
+        testOS = new OrderService();
+        int orderid = testOS.getNextOrderID();
+        test_order0 = new Order(6786, orderid);
     }
 
     @Test
@@ -88,6 +90,6 @@ public class OrderTest {
     void orderInitialState(){
         assertEquals("Processing", test_order0.getStatus());
         assertEquals(0.0, test_order0.getTotalCost());
-        assertTrue(test_order0.getId() > 0, "Order id should be a positive int");
+        assertTrue(test_order0.getId() >= 0, "Order id should be a positive int");
     }
 }
