@@ -8,26 +8,105 @@ import org.junit.jupiter.api.BeforeEach;
 //setting up variables for all tests
 public class OrderProcessingTest {
 
+    private InventoryService test_inventory;
+    private SupplierService test_sm;
+    private OrderService test_op;
+    private Supplier test_supplier;
+    private Product product;
+    private HashMap <Product, Integer> products;
+    private Product test_product0;
+    private Product test_product1;
+    
+  
+    @BeforeEach
+    void setup (){
+        test_inventory = new InventoryService();
+        test_sm = new SupplierService();
+        test_op = new OrderService();
+        test_supplier = new Supplier("test", "087472037485", "email@email.com");
+        int supplierid = test_supplier.getSupplierId();
+        products = new HashMap<>();
+        test_product0 = new Product("test", 3.00, 50, supplierid, 50, 15);
+        test_product1 = new Product("Second test", 6.00, 40, supplierid, 60, 20);
+
+        test_inventory.addProduct(test_product0);
+        test_inventory.addProduct(test_product1);
+    }
+/* 
     @Test
     void testCreateAndCancelOrder() {
-        InventoryManagement test_inventory = new InventoryManagement();
-        SupplierManagement test_sm = new SupplierManagement();
-        Supplier test_supplier = new Supplier("test", 087472037485f, "email@email.com");
-        HashMap <Product, Integer> products = new HashMap<>();
 
         test_sm.addSupplierToList(test_supplier);
 
-        Product product = new Product("TestItem", 10.0, 10, 1, test_sm);
         int product_id = product.getProductId();
         test_inventory.addProduct(product);
         products.put(product, 5);
 
-        OrderProcessing test_op = new OrderProcessing();
-        test_op.placeOrder(6, 679, products);
+        OrderService test_op = new OrderService();
+        test_op.placeOrder(679, products);
         
         assertEquals(155, test_inventory.getProductById(product_id).getProductQuantity());
 
         test_op.cancelOrder(6);
         assertEquals(155, test_inventory.getProductById(product_id).getProductQuantity());
+    }*/
+
+    //testing the system places an order and reduces inventory correctly
+    @Test
+    void testPlaceAnOrder(){
+        //int product_id = product.getProductId();
+        assertEquals(390, test_inventory.getTotalValue());
+        products.put(test_product1, 5);
+        products.put(test_product0, 10);
+        test_op.placeOrder(457, products);
+
+        assertEquals(330, test_inventory.getTotalValue());
+        int orderId = (test_op.getNextOrderID() - 1);
+        Order placed = test_op.getOrderbyId(orderId);
+        assertNotNull(placed);
+        assertEquals("Order complete", placed.getStatus());
     }
+
+    //testing the system doesn't allow ordering of a product when insufficient stock
+    @Test
+    void testPlaceAnOrder_noStock(){
+        products.put(test_product1, 51);
+        //products.put(test_product0, 100);
+        test_op.placeOrder(4797, products);
+
+        int orderId2 = (test_op.getNextOrderID() - 1);
+        Order placed2= test_op.getOrderbyId(orderId2);
+        assertNotNull(placed2);
+        assertEquals("Failed to place order of " + test_product1.getProductName() + " due to stock issues", placed2.getStatus());
+
+        assertEquals(390, test_inventory.getTotalValue());
+    }
+
+    //testing the system calculates the total of an order correctly
+    @Test
+    void testPlaceAnOrder_totalCost(){
+        products.put(test_product1, 5);
+        products.put(test_product0, 10);
+        test_op.placeOrder(375, products);
+
+        int orderId3 = (test_op.getNextOrderID() - 1);
+        Order placed3 = test_op.getOrderbyId(orderId3);
+
+        assertNotNull(placed3);
+        assertEquals(60, placed3.getTotalCost());
+
+    }
+
+    //testing order incrementing works 
+    //should return true
+    @Test
+    void testPlaceAnOrder_uniqueIds(){
+        int id1 = test_op.getNextOrderID();
+        int id2 = test_op.getNextOrderID();
+
+        assertNotEquals(id1, id2);
+    }
+
+
+
 }

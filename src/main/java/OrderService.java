@@ -2,8 +2,8 @@ import java.util.*;
 
 public class OrderService {
     public ArrayList <Order> orders;
-    private static int nextOrderId = 0;
-    private int id;
+    private int nextOrderId = 0;
+    private int orderid;
     private InventoryService inventoryManagement;
 
     public OrderService(){
@@ -11,10 +11,10 @@ public class OrderService {
     }
 
     public void placeOrder( int customerid, HashMap<Product, Integer> products){
-
+        orderid = getNextOrderID();
         //revisit logic
-        Order order1 = new Order(customerid);
-        id = getNextOrderID();
+        Order order1 = new Order(customerid, orderid);
+        
         for (Map.Entry<Product, Integer> entry : products.entrySet()) {
             Product product = entry.getKey();
             int quantity = entry.getValue();
@@ -52,8 +52,8 @@ public class OrderService {
 
 
     public int getNextOrderID(){
-        nextOrderId = nextOrderId++;
-        return nextOrderId;
+       // nextOrderId = nextOrderId+1;
+        return nextOrderId++;
     }
 
     public void getOrders(){

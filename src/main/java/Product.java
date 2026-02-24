@@ -31,7 +31,7 @@ public class Product {
     //getter methods, returns the variables of Product instance
 
     private int getNextProductID(){
-        nextProductId = nextProductId++;
+        nextProductId = nextProductId+1;
         return nextProductId;
     }
 

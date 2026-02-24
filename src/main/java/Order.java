@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Order {
-    private static int nextOrderId = 0;
+    //private static int nextOrderId = 0;
     private int id;
     private HashMap<Integer, Integer> productsOrdered;
     private int customerId;
@@ -10,8 +10,8 @@ public class Order {
     private String status;
 
 
-    public Order(int customerId){
-        id = getNextOrderID();
+    public Order(int customerId, int orderId){
+        //id = getNextOrderID();
 
         this.customerId = customerId;
 
@@ -35,17 +35,17 @@ public class Order {
             status = "Pending";
             totalCost = totalCost + (product.getProductPrice() * customerOrderQuantity);
         } else {
-            status = "Failed to place order of " + product + " due to stock issues";
+            status = "Failed to place order of " + product.getProductName() + " due to stock issues";
             return false;
         }
         status = "Order complete";
         return true;
     }
-
+/* 
     public int getNextOrderID(){
-        nextOrderId = nextOrderId++;
+        nextOrderId = nextOrderId+1;
         return nextOrderId;
-    }
+    }*/
 
     public int getId() {
         return id;

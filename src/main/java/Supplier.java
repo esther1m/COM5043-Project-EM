@@ -23,7 +23,7 @@ public class Supplier {
 
     //getter methods, returns the variables of Supplier Instance
     public int getNextSupplierID(){
-        nextSupplierId = nextSupplierId++;
+        nextSupplierId = nextSupplierId+1;
         return nextSupplierId;
     }
 
