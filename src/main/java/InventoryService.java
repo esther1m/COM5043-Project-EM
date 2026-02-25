@@ -44,10 +44,15 @@ public class InventoryService{
     }
 
     public void getProducts(){
+        if (productsInventory.size() == 0 ){
+            System.out.println("No products in inventory. Please create products to add them to inventory.");   
+        }
         for (int productId : productsInventory.keySet()) {
             Product product = getProductById(productId);
             System.out.println("ID: " + productId + " | Name: "  + product.getProductName() + " | Price £" + product.getProductPrice() + " | Quantity: " + product.getProductQuantity());
+            
         }
+        //System.out.println("All products in the inventory have been listed");
     }
     
     public double getTotalValue() {
