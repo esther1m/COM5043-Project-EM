@@ -34,7 +34,8 @@ public class App {
 
     public void productsMenu(){
         System.out.println("Please select an option:");
-        System.out.println("1. Add Products");
+        System.out.println("1. View Products");
+        System.out.println("2. Add Products");
         //System.out.println("2. Update Product quantity");
         System.out.println("3. Delete Product");
         System.out.println("4. Exit");
@@ -51,6 +52,9 @@ public class App {
 
             switch (user_input){
                 case "1":
+                    inventoryManagement.getProducts();
+                    break;
+                case "2":
                     System.out.println("What's the product called?");
                     String user_product_name = scanner.nextLine();
                     System.out.println("What's the product's price?");
@@ -64,7 +68,7 @@ public class App {
                     //Product product = new Product(0, user_product_name, user_product_price, user_product_quantity, user_product_supplier, supplierManagement);
                     //inventoryManagement.addProduct(product);
                     break;
-                case "2":
+                case "3":
                     /*int user_input_productid = scanner.nextInt();
                     System.out.println("What's the product id of the product you want to update the quantity for? ");
                     Product changing_product = inventoryManagement.getProductById(user_input_productid);
@@ -73,13 +77,13 @@ public class App {
                     System.out.println("What's the new quantity? ");
                     changing_product.setProductQuantity(user_input_quantity);*/
                     break;
-                case "3":
+                case "4":
                     int user_input_productid2 = scanner.nextInt();
                     System.out.println("What's the product id of the product you want to delete? ");
                     //Product removing_product = inventoryManagement.getProductById(user_input_productid2);
                     inventoryManagement.removeProduct(user_input_productid2);
                     break;
-                case "4":
+                case "5":
                     System.out.println("Exiting... returning to the main menu");
                     check = false;
                     break;
