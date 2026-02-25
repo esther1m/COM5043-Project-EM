@@ -2,19 +2,19 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class FinancialService {
-   // private InventoryService inventory;
+    private InventoryService inventory;
     private ArrayList<Order> orders;
     private OrderService orderProcessing;
     double total;
 
-    public FinancialService( ArrayList <Order> orders){
-       // this.inventory = inventory;
+    public FinancialService( ArrayList <Order> orders, InventoryService inventoryService){
+        this.inventory = inventoryService;
         this.orders = orders;
     }
 
     public double calculateInventory(){
-        total = 0.0;
-       // total = inventory.getTotalValue();
+        //total = 0.0;
+        total = inventory.getTotalValue();
         return total;
     }
 

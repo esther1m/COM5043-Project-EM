@@ -142,27 +142,29 @@ public class App {
                     String user_supplier_phone_number = scanner.nextLine();
                     System.out.println("What's the supplier's email?");
                     String user_supplier_email = scanner.nextLine();
-                    scanner.nextLine();
+                    //scanner.nextLine();
 
                     Supplier supplier = new Supplier(user_suplier_name, user_supplier_phone_number, user_supplier_email);
                     supplierManagement.addSupplierToList(supplier);
+                    System.out.println("Supplier successfully added");
                     break;
                 case "2":
                     System.out.println("What Supplier do you want to edit? Please insert their supplier id: ");
                     int user_supplier_id = scanner.nextInt();
+                    scanner.nextLine();
                     Supplier changing_supplier = supplierManagement.getSupplierById(user_supplier_id);
 
                     System.out.println("Do you want to edit the supplier contact number? (Y or N): ");
-                    String answer1 = scanner.nextLine();
-                    if (answer1 == "Y"){
+                    String answer1 = scanner.nextLine().trim();
+                    if (answer1.equalsIgnoreCase("Y")){
                         System.out.println("Enter the supplier's new phone number: ");
                         String new_number = scanner.nextLine();
                         changing_supplier.setSupplierPhoneNumber(new_number);
                         System.out.println("Contact number changed: " + new_number);
                     }
                     System.out.println("Do you want to edit the supplier's email? (Y or N): ");
-                    String answer2 = scanner.nextLine();
-                    if (answer2 == "Y") {
+                    String answer2 = scanner.nextLine().trim();
+                    if (answer2.equalsIgnoreCase("Y")) {
                         System.out.println("Enter the supplier's new email: ");
                         String new_email = scanner.nextLine();
                         changing_supplier.setSupplierEmail(new_email);
@@ -172,9 +174,10 @@ public class App {
                 case "3":
                     System.out.println("What's the supplier id of the supplier you want to delete? ");
                     int user_input_supplierid = scanner.nextInt();
+                    scanner.nextLine();
                     Supplier removing_supplier = supplierManagement.getSupplierById(user_input_supplierid);
                     supplierManagement.deleteSupplierFromList(user_input_supplierid);
-                    System.out.println("Successfully delted supplier " + removing_supplier);
+                    System.out.println("Successfully deleted supplier " + removing_supplier.getSupplierName());
                     break;
                 case "4":
                     System.out.println("Exiting... returning to the main menu");
@@ -249,7 +252,7 @@ public class App {
                     System.out.println("Total Inventory Value: £" + inventoryManagement.getTotalValue());
                     break;
                 case "6":
-                    FinancialService report = new FinancialService(orderProcessing.orders);
+                    FinancialService report = new FinancialService(orderProcessing.orders, inventoryManagement);
                     report.generateReport();;
                     break;
             //exit
