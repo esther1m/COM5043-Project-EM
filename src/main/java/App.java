@@ -37,7 +37,7 @@ public class App {
         System.out.println("1. View Products");
         System.out.println("2. Add Products");
         //System.out.println("2. Update Product quantity");
-        System.out.println("3. Chang price of Product");
+        System.out.println("3. Change price of Product");
         System.out.println("4. Delete Product");
         System.out.println("5. Exit");
     }
