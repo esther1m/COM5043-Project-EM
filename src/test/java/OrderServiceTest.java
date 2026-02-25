@@ -6,7 +6,7 @@ import java.util.HashMap;
 import org.junit.jupiter.api.BeforeEach;
 
 //setting up variables for all tests
-public class OrderProcessingTest {
+public class OrderServiceTest {
 
     private InventoryService test_inventory;
     private SupplierService test_sm;

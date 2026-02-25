@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class FinancialManagementTest {
+public class FinancialServiceTest {
     SupplierService supplierManagement;
     InventoryService inventory;
     OrderService orderService;

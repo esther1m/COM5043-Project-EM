@@ -3,7 +3,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 
 //setting up variables for all tests
-public class InventoryManagementTest {
+public class InventoryServiceTest {
 
     private InventoryService test_inventory;
     private SupplierService test_supplierService;
