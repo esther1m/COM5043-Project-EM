@@ -4,8 +4,7 @@ import java.util.Map;
 public class FinancialService {
     private InventoryService inventory;
     private ArrayList<Order> orders;
-    private OrderService orderProcessing;
-    double total;
+    private double total;
 
     public FinancialService( ArrayList <Order> orders, InventoryService inventoryService){
         this.inventory = inventoryService;
@@ -13,7 +12,6 @@ public class FinancialService {
     }
 
     public double calculateInventory(){
-        //total = 0.0;
         total = inventory.getTotalValue();
         return total;
     }

@@ -37,27 +37,8 @@ public class OrderService {
         }
         return null;
     }
-/* 
-    public void cancelOrder(int orderid){
-        Order findOrder = getOrderbyId(orderid);
-        
-        for (Map.Entry <Integer, Integer> entry : findOrder.productOrders.entrySet()) {
-            int product_id = entry.getKey();
-            int order_quantity = entry.getValue();
-
-            Product product = inventoryManagement.getProductById(product_id);
-            if (product!= null){
-                product.addStock(order_quantity);
-                findOrder.status = "Cancelled. Please allow a couple of days for the refund to show in your account";
-                findOrder.totalCost = 0;
-                orders.remove(findOrder);
-            }
-        }
-    }*/
-
 
     public int getNextOrderID(){
-       // nextOrderId = nextOrderId+1;
         return nextOrderId++;
     }
 

@@ -17,7 +17,6 @@ public class InventoryService{
             return false;
         }
         int id = product.getProductId();
-       // int quantity = product.getProductQuantity();
         if (productsInventory.containsKey(id)){
             return false;
         } else {
@@ -37,7 +36,6 @@ public class InventoryService{
         }
         
     }
-    //revisit logic
     //allowing to search/return/get product from inventory by id:
     public Product getProductById(int id){
         return productsInventory.get(id);
@@ -52,7 +50,6 @@ public class InventoryService{
             System.out.println("ID: " + productId + " | Name: "  + product.getProductName() + " | Price £" + product.getProductPrice() + " | Quantity: " + product.getProductQuantity());
             
         }
-        //System.out.println("All products in the inventory have been listed");
     }
     
     public double getTotalValue() {

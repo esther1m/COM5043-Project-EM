@@ -6,7 +6,6 @@ public class Supplier {
 
     private int supplierId;
     private String supplierName;
-    //unnecessatry additions can delete
     private String supplierPhoneNumber;
     private String supplierEmail;
     private ArrayList <Product> supplierOrderHistory;

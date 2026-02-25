@@ -20,12 +20,7 @@ public class Product {
         this.productQuantity = productQuantity;
         this.preferredSupplierID = preferredSupplierID;
         this.reorderQuantity = reorderQuantity;
-        this.reorderThreshold = reorderThreshold;
-
-/*move to supplier prefences??
-        reorderThreshold = 15;
-        reorderQuantity = 150;
-     */   
+        this.reorderThreshold = reorderThreshold;  
     }
 
     //getter methods, returns the variables of Product instance
@@ -62,11 +57,6 @@ public class Product {
         return preferredSupplierID;
     }
     
-/* 
-    public void setProductQuantity(int quantity){
-        this.productQuantity = quantity;
-    }*/
-
     //setting the product's price
     public void setPrice(double price) {
         this.productPrice = price;
@@ -78,7 +68,6 @@ public class Product {
             productQuantity = productQuantity + amount;
         }
     }
-//revisit this logic
     //removing stock from product, checking there's enough stock and reordering if not
     public void removeStock(int amount){
         if (amount > 0 && productQuantity >= amount) {
@@ -88,8 +77,6 @@ public class Product {
         }
         if (productQuantity <= reorderThreshold) {
             System.out.println(productName + " is low stock.");
-            //Supplier supplier = supplierManagement.getSupplierById(preferredSupplierID);
-            //supplier.orderStock(this, reorderQuantity);
         }
     }
 }

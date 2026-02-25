@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Order {
-    //private static int nextOrderId = 0;
     private int id;
     public HashMap<Integer, Integer> productsOrdered;
     private int customerId;
@@ -12,7 +11,6 @@ public class Order {
 
 
     public Order(int customerId, int orderId, InventoryService inventory){
-        //id = getNextOrderID();
 
         this.customerId = customerId;
         this.inventory = inventory;
@@ -44,11 +42,7 @@ public class Order {
         status = "Order complete";
         return true;
     }
-/* 
-    public int getNextOrderID(){
-        nextOrderId = nextOrderId+1;
-        return nextOrderId;
-    }*/
+
 
     public int getId() {
         return id;
@@ -61,14 +55,6 @@ public class Order {
     public String getStatus(){
         return status;
     }
-/*revisit this logic
-    public void getProductOrders(){
-        for (int productId : productsOrdered.keySet()) {
-            //Product product = inventoryManagement.getProductById(productId);
-           // System.out.println("ID: " + productId + " | Name: "  + product.getProductName() + " | Price £" + product.getProductPrice() + " | Quantity: " + productOrders.entrySet());
-        }
-
-    }*/
 
     
 }

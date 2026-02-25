@@ -8,41 +8,33 @@ public class App {
     Scanner scanner = new Scanner(System.in);
     
     HashMap<Product, Integer> products;
-    //Product product = new Product(0, user_input, 0, 0)
     SupplierService supplierManagement = new SupplierService();
     InventoryService inventoryManagement = new InventoryService(supplierManagement);
     OrderService orderProcessing = new  OrderService(inventoryManagement);
-    //Supplier supplier = new Supplier("Best Suppliers LTD", "075837825377", "bestsuppliersltd@gmail.com");
-    //supplierManagement.addSupplierToList(supplier);
 
     public void menu(){
             System.out.println("Welcome to the Warehouse Management System.");
             System.out.println("Please select an option:");
             System.out.println("1. View Order History");
             System.out.println("2. View Products");
-            //System.out.println("3. Add Products");
             System.out.println("3. Place an Order");
             System.out.println("4. View Suppliers");
-            //System.out.println("5. Edit Supplier Details");
-            //System.out.println("6. View Financial Report");
             System.out.println("5. View total inventory values");
             System.out.println("6. Generate a Financial Report");
             System.out.println("7. Exit");
             System.out.println("Enter your choice: ");
-            //user_input = scanner.nextLine();
     }
 
     public void productsMenu(){
         System.out.println("Please select an option:");
         System.out.println("1. View Products");
         System.out.println("2. Add Products");
-        //System.out.println("2. Update Product quantity");
+
         System.out.println("3. Change price of Product");
         System.out.println("4. Delete Product");
         System.out.println("5. Exit");
     }
 
-    //revisit logic
 
     public void productsSwitch(){
         boolean check = true;
@@ -62,28 +54,15 @@ public class App {
                     double user_product_price = scanner.nextDouble();
                     System.out.println("What quantity do we currently have of the product in stock?");
                     int user_product_quantity = scanner.nextInt();
-                    //System.out.print("What's the id of the preferred supplier for this product?");
-                    //int user_product_supplier = scanner.nextInt();
                     System.out.println("When reordering " + user_product_name + " , how many should we buy?");
                     int user_product_reorder_quantity = scanner.nextInt();
                     System.out.println("At what stock threshold should we reorder " + user_product_name + " ");
                     int user_product_reorder_threshold = scanner.nextInt();
                     scanner.nextLine();
-
-                    //int supplierId = supplier.getSupplierId();
                     Product product = new Product(user_product_name, user_product_price, user_product_quantity, 1, user_product_reorder_quantity, user_product_reorder_threshold);
                     inventoryManagement.addProduct(product);
                     
                     break;
-                //case "3":
-                    /*int user_input_productid = scanner.nextInt();
-                    System.out.println("What's the product id of the product you want to update the quantity for? ");
-                    Product changing_product = inventoryManagement.getProductById(user_input_productid);
-
-                    int user_input_quantity = scanner.nextInt();
-                    System.out.println("What's the new quantity? ");
-                    changing_product.setProductQuantity(user_input_quantity);*/    
-                    //break;
                 case "3":
                     System.out.println("What's the product id of the product you want to change the price of? ");
                     int user_input_productid1 = scanner.nextInt();
@@ -142,7 +121,6 @@ public class App {
                     String user_supplier_phone_number = scanner.nextLine();
                     System.out.println("What's the supplier's email?");
                     String user_supplier_email = scanner.nextLine();
-                    //scanner.nextLine();
 
                     Supplier supplier = new Supplier(user_suplier_name, user_supplier_phone_number, user_supplier_email);
                     supplierManagement.addSupplierToList(supplier);
@@ -216,9 +194,7 @@ public class App {
                     //getting customer id
                     System.out.println("Please insert your customer ID or make one up now:");
                     int user_id = scanner.nextInt();
-                    
-                    //getting auto generated order id
-                    //int user_order_id = orderProcessing.getNextOrderID();
+        
                     //allowing user to add as many products as they want
                     Boolean not_complete = true;
                     while (not_complete){

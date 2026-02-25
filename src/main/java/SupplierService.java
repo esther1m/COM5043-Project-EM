@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class SupplierService {
     public ArrayList <Supplier> supplierList;
-    Supplier defaultSupplier1;
-    Supplier defaultSupplier2;
+    public Supplier defaultSupplier1;
+    public Supplier defaultSupplier2;
 
     public SupplierService(){
         supplierList = new ArrayList<>();
