@@ -2,7 +2,7 @@ import java.util.*;
 
 public class OrderService {
     public ArrayList <Order> orders;
-    private int nextOrderId = 0;
+    private static int nextOrderId = 0;
     private int orderid;
     private InventoryService inventoryManagement;
 
@@ -13,16 +13,20 @@ public class OrderService {
 
     public void placeOrder( int customerid, HashMap<Product, Integer> products){
         orderid = getNextOrderID();
-        //revisit logic
+        
         Order order1 = new Order(customerid, orderid, inventoryManagement);
         
         for (Map.Entry<Product, Integer> entry : products.entrySet()) {
             Product product = entry.getKey();
             int quantity = entry.getValue();
             order1.addProductsToOrder(product, quantity);
+            if ((product.getProductQuantity() - quantity) < product.getReorderThreshold()){
+                inventoryManagement.reorderStock(product.getProductId());
+            }
         }
         
         orders.add(order1);
+        
     }
 
     public Order getOrderbyId(int id){

@@ -86,7 +86,7 @@ public class Product {
         } else {
             System.out.println("Sorry, this product " + productName + " could not be ordered.");
         }
-        if (productQuantity < reorderThreshold) {
+        if (productQuantity <= reorderThreshold) {
             System.out.println(productName + " is low stock.");
             //Supplier supplier = supplierManagement.getSupplierById(preferredSupplierID);
             //supplier.orderStock(this, reorderQuantity);

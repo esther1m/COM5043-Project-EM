@@ -12,8 +12,8 @@ public class App {
     SupplierService supplierManagement = new SupplierService();
     InventoryService inventoryManagement = new InventoryService(supplierManagement);
     OrderService orderProcessing = new  OrderService(inventoryManagement);
-    Supplier supplier = new Supplier("Best Suppliers LTD", "075837825377", "bestsuppliersltd@gmail.com");
-    
+    //Supplier supplier = new Supplier("Best Suppliers LTD", "075837825377", "bestsuppliersltd@gmail.com");
+    //supplierManagement.addSupplierToList(supplier);
 
     public void menu(){
             System.out.println("Welcome to the Warehouse Management System.");
@@ -70,8 +70,8 @@ public class App {
                     int user_product_reorder_threshold = scanner.nextInt();
                     scanner.nextLine();
 
-                    int supplierId = supplier.getSupplierId();
-                    Product product = new Product(user_product_name, user_product_price, user_product_quantity, supplierId, user_product_reorder_quantity, user_product_reorder_threshold);
+                    //int supplierId = supplier.getSupplierId();
+                    Product product = new Product(user_product_name, user_product_price, user_product_quantity, 1, user_product_reorder_quantity, user_product_reorder_threshold);
                     inventoryManagement.addProduct(product);
                     
                     break;

@@ -16,6 +16,7 @@ public class Order {
 
         this.customerId = customerId;
         this.inventory = inventory;
+        this.id = orderId;
 
         totalCost = 0;
         productsOrdered = new HashMap<>();
