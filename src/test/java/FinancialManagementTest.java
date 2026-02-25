@@ -1,68 +1,77 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-/* 
-public class FinancialManagementTest {
 
-    @Test
-    void testFinancialCalculationsAreCorrect() {
-        InventoryManagement inventory = new InventoryManagement();
-        SupplierManagement supplierManagement = new SupplierManagement();
-        Supplier supplier = new Supplier("test", 075648364465f ,"test@test");
+public class FinancialManagementTest {
+    SupplierService supplierManagement;
+    InventoryService inventory;
+    OrderService orderService;
+    Supplier supplier;
+    int preferredSupplierID;
+    Product product1;
+    Product product2;
+    Order order;
+    ArrayList<Order> orders;
+
+    @BeforeEach
+    void setup(){
+        supplierManagement = new SupplierService();
+        inventory = new InventoryService(supplierManagement);
+        orderService = new OrderService(inventory);
+        
+        supplier = new Supplier("test", "075648364465" ,"test@test");
         supplierManagement.addSupplierToList(supplier);
-        int preferredSupplierID = supplier.getSupplierId();
+        preferredSupplierID = supplier.getSupplierId();
 
         // adding products to the inventory
-        Product product1 = new Product("Widget", 10.0, 5, preferredSupplierID, supplierManagement); // £50 stock value
-        Product product2 = new Product("Gadget", 20.0, 3, preferredSupplierID, supplierManagement); // £60 stock value
+        product1 = new Product("Widget", 10.0, 5, preferredSupplierID, 2, 5); // £50 stock value
+        product2 = new Product("Gadget", 20.0, 3, preferredSupplierID, 3, 1); // £60 stock value
         inventory.addProduct(product1);
         inventory.addProduct(product2);
 
+       
+    }
+    @Test
+    void testFinancialCalculationsAreCorrect() {
         // creating order (simulate sale of 2 gadgets = £40)
-        Order order = new Order(4, 789);
-        order.addProductsToOrder(product1, 2); // 2 gadgets ordered
-        order.addProductsToOrder(product2, 1);
+        order = new Order(789, orderService.getNextOrderID(), inventory);
+        order.addProductsToOrder(product1, 1); 
+        order.addProductsToOrder(product2, 2);
 
-        ArrayList<Order> orders = new ArrayList<>();
+        orders = new ArrayList<>();
         orders.add(order);
-
         // testing the calculation
-        FinancialManagement report = new FinancialManagement(inventory, orders);
+        FinancialService report = new FinancialService(orders, inventory);
 
         double inventoryValue = report.calculateInventory();
         double salesRevenue = report.calculateSalesRevenue();
         double netIncome = salesRevenue - inventoryValue;
 
  
-        assertEquals(4570.0, inventoryValue, 0.01); 
-        assertEquals(40.0, salesRevenue, 0.01);     // 2 x £20
-        assertEquals(-4530, netIncome, 0.01);       // loss scenario
+        assertEquals(60.0, inventoryValue); 
+        assertEquals(50.0, salesRevenue);     
+        assertEquals(-10, netIncome);       // loss scenario
     }
 
     @Test
-    void testNetIncomeZero() {
-        InventoryManagement inventory2 = new InventoryManagement();
-        SupplierManagement sm = new SupplierManagement();
-        Supplier supplier = new Supplier("test supplier 2", 75859756378f, "emai@email.com");
-        sm.addSupplierToList(supplier);
-        int preferredSupplierID = supplier.getSupplierId();
+    void testPositiveIncome() {
 
-        Product p1 = new Product("BalanceItem", 10.0, 5, preferredSupplierID, sm); // Inventory £50
-        inventory2.addProduct(p1);
-
-        Order order = new Order(765, 4);
-        order.addProductsToOrder(p1, 5); // Sale £50
+        Order order = new Order(765,orderService.getNextOrderID(), inventory);
+        order.addProductsToOrder(product1, 5); // Sale £50
+        order.addProductsToOrder(product2, 3);
 
         ArrayList<Order> orders = new ArrayList<>();
         orders.add(order);
 
-        FinancialManagement report = new FinancialManagement(inventory2, orders);
-        assertEquals(1500.0, report.calculateInventory(), 0.01);
-        assertEquals(50.0, report.calculateSalesRevenue(), 0.01);
-        assertEquals(-1450.0, report.calculateSalesRevenue() - report.calculateInventory(), 0.01);
+        FinancialService report = new FinancialService(orders, inventory);
+        assertEquals(0, report.calculateInventory());
+        assertEquals(110.0, report.calculateSalesRevenue());
+        assertEquals(110, report.calculateSalesRevenue() - report.calculateInventory());
 }
 
 }
-*/
+
