@@ -12,8 +12,8 @@ public class App {
     SupplierService supplierManagement = new SupplierService();
     InventoryService inventoryManagement = new InventoryService(supplierManagement);
     OrderService orderProcessing = new  OrderService(inventoryManagement);
-    Supplier supplier = new Supplier("Best Suppliers LTD", "075837825377", "bestsuppliersltd@gmail.com");
-    
+    //Supplier supplier = new Supplier("Best Suppliers LTD", "075837825377", "bestsuppliersltd@gmail.com");
+    //supplierManagement.addSupplierToList(supplier);
 
     public void menu(){
             System.out.println("Welcome to the Warehouse Management System.");
@@ -37,8 +37,9 @@ public class App {
         System.out.println("1. View Products");
         System.out.println("2. Add Products");
         //System.out.println("2. Update Product quantity");
-        System.out.println("3. Delete Product");
-        System.out.println("4. Exit");
+        System.out.println("3. Chang price of Product");
+        System.out.println("4. Delete Product");
+        System.out.println("5. Exit");
     }
 
     //revisit logic
@@ -61,27 +62,49 @@ public class App {
                     double user_product_price = scanner.nextDouble();
                     System.out.println("What quantity do we currently have of the product in stock?");
                     int user_product_quantity = scanner.nextInt();
-                    System.out.print("What's the id of the preferred supplier for this product?");
-                    int user_product_supplier = scanner.nextInt();
+                    //System.out.print("What's the id of the preferred supplier for this product?");
+                    //int user_product_supplier = scanner.nextInt();
+                    System.out.println("When reordering " + user_product_name + " , how many should we buy?");
+                    int user_product_reorder_quantity = scanner.nextInt();
+                    System.out.println("At what stock threshold should we reorder " + user_product_name + " ");
+                    int user_product_reorder_threshold = scanner.nextInt();
                     scanner.nextLine();
 
-                    //Product product = new Product(0, user_product_name, user_product_price, user_product_quantity, user_product_supplier, supplierManagement);
-                    //inventoryManagement.addProduct(product);
+                    //int supplierId = supplier.getSupplierId();
+                    Product product = new Product(user_product_name, user_product_price, user_product_quantity, 1, user_product_reorder_quantity, user_product_reorder_threshold);
+                    inventoryManagement.addProduct(product);
+                    
                     break;
-                case "3":
+                //case "3":
                     /*int user_input_productid = scanner.nextInt();
                     System.out.println("What's the product id of the product you want to update the quantity for? ");
                     Product changing_product = inventoryManagement.getProductById(user_input_productid);
 
                     int user_input_quantity = scanner.nextInt();
                     System.out.println("What's the new quantity? ");
-                    changing_product.setProductQuantity(user_input_quantity);*/
+                    changing_product.setProductQuantity(user_input_quantity);*/    
+                    //break;
+                case "3":
+                    System.out.println("What's the product id of the product you want to change the price of? ");
+                    int user_input_productid1 = scanner.nextInt();
+                    scanner.nextLine();
+                    Product changing_product = inventoryManagement.getProductById(user_input_productid1);
+                    String productName0 = changing_product.getProductName();
+                    System.out.println("What is the new price of " + productName0 + "?");
+                    int user_input_price = scanner.nextInt();
+                    scanner.nextLine();
+                    changing_product.setPrice(user_input_price);
+                    System.out.println("Price of " + productName0 + "successfully changed to " + user_input_price);
                     break;
                 case "4":
-                    int user_input_productid2 = scanner.nextInt();
+                    
                     System.out.println("What's the product id of the product you want to delete? ");
-                    //Product removing_product = inventoryManagement.getProductById(user_input_productid2);
+                    int user_input_productid2 = scanner.nextInt();
+                    scanner.nextLine();
+                    Product removing_product = inventoryManagement.getProductById(user_input_productid2);
+                    String productName = removing_product.getProductName();
                     inventoryManagement.removeProduct(user_input_productid2);
+                    System.out.println(productName + " has been successfully deleted from inventory.");
                     break;
                 case "5":
                     System.out.println("Exiting... returning to the main menu");
@@ -119,27 +142,29 @@ public class App {
                     String user_supplier_phone_number = scanner.nextLine();
                     System.out.println("What's the supplier's email?");
                     String user_supplier_email = scanner.nextLine();
-                    scanner.nextLine();
+                    //scanner.nextLine();
 
                     Supplier supplier = new Supplier(user_suplier_name, user_supplier_phone_number, user_supplier_email);
                     supplierManagement.addSupplierToList(supplier);
+                    System.out.println("Supplier successfully added");
                     break;
                 case "2":
                     System.out.println("What Supplier do you want to edit? Please insert their supplier id: ");
                     int user_supplier_id = scanner.nextInt();
+                    scanner.nextLine();
                     Supplier changing_supplier = supplierManagement.getSupplierById(user_supplier_id);
 
                     System.out.println("Do you want to edit the supplier contact number? (Y or N): ");
-                    String answer1 = scanner.nextLine();
-                    if (answer1 == "Y"){
+                    String answer1 = scanner.nextLine().trim();
+                    if (answer1.equalsIgnoreCase("Y")){
                         System.out.println("Enter the supplier's new phone number: ");
                         String new_number = scanner.nextLine();
                         changing_supplier.setSupplierPhoneNumber(new_number);
                         System.out.println("Contact number changed: " + new_number);
                     }
                     System.out.println("Do you want to edit the supplier's email? (Y or N): ");
-                    String answer2 = scanner.nextLine();
-                    if (answer2 == "Y") {
+                    String answer2 = scanner.nextLine().trim();
+                    if (answer2.equalsIgnoreCase("Y")) {
                         System.out.println("Enter the supplier's new email: ");
                         String new_email = scanner.nextLine();
                         changing_supplier.setSupplierEmail(new_email);
@@ -149,9 +174,10 @@ public class App {
                 case "3":
                     System.out.println("What's the supplier id of the supplier you want to delete? ");
                     int user_input_supplierid = scanner.nextInt();
+                    scanner.nextLine();
                     Supplier removing_supplier = supplierManagement.getSupplierById(user_input_supplierid);
                     supplierManagement.deleteSupplierFromList(user_input_supplierid);
-                    System.out.println("Successfully delted supplier " + removing_supplier);
+                    System.out.println("Successfully deleted supplier " + removing_supplier.getSupplierName());
                     break;
                 case "4":
                     System.out.println("Exiting... returning to the main menu");
@@ -190,16 +216,19 @@ public class App {
                     //getting customer id
                     System.out.println("Please insert your customer ID or make one up now:");
                     int user_id = scanner.nextInt();
+                    
                     //getting auto generated order id
-                    int user_order_id = orderProcessing.getNextOrderID();
+                    //int user_order_id = orderProcessing.getNextOrderID();
                     //allowing user to add as many products as they want
                     Boolean not_complete = true;
                     while (not_complete){
-                        System.out.println("Please add products to your order by entering the product id. When your order is complete, please type 'y.'");
-                        if (scanner.equals("y")){
+                        scanner.nextLine();
+                        System.out.println("Please add products to your order by entering the product id. If your order is complete, please type 'y.'");
+                        String input = scanner.nextLine();
+                        if (input.equalsIgnoreCase("y")){
                             not_complete = false;
                         } else {
-                            int user_product_id = scanner.nextInt();
+                            int user_product_id = Integer.parseInt(input);
                             System.out.println("What quantity would you like to buy? ");
                             int user_quantity = scanner.nextInt();
                             Product product = inventoryManagement.getProductById(user_product_id);
@@ -223,7 +252,7 @@ public class App {
                     System.out.println("Total Inventory Value: £" + inventoryManagement.getTotalValue());
                     break;
                 case "6":
-                    FinancialService report = new FinancialService(orderProcessing.orders);
+                    FinancialService report = new FinancialService(orderProcessing.orders, inventoryManagement);
                     report.generateReport();;
                     break;
             //exit

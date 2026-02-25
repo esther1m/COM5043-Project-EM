@@ -6,7 +6,7 @@ public class InventoryService{
     public HashMap <Integer, Product> productsInventory;
     private SupplierService supplierService;
 
-    public InventoryService(SupplierService suppplierService){
+    public InventoryService(SupplierService supplierService){
         productsInventory = new HashMap<>();
         this.supplierService = supplierService;
     }
@@ -65,13 +65,22 @@ public class InventoryService{
 
     public boolean reorderStock(int productId){
         Product product1 = getProductById(productId);
+        if (product1 == null){
+            System.out.println("Product not found for reorder.");
+            return false;
+        }
+        if (this.supplierService == null){
+            System.out.println("Supplier service not configured.");
+            return false;
+        }
         int reorderThreshold = product1.getReorderThreshold();
         int reorderAmount = product1.getReorderQuantity();
        
-        if (product1.getProductQuantity() < reorderThreshold){
-            Supplier supplier = supplierService.getSupplierById(product1.getPreferredSupplierId());
+        if (product1.getProductQuantity() <= reorderThreshold){
+            Supplier supplier = this.supplierService.getSupplierById(product1.getPreferredSupplierId());
             if (supplier != null){
                 supplier.orderStock(product1, reorderAmount);
+                System.out.println("Reorder of " + product1.getProductName() + "ordered.");
             } else {
                 return false;
             }
