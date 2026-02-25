@@ -4,7 +4,7 @@ import java.util.HashMap;
 public class Order {
     //private static int nextOrderId = 0;
     private int id;
-    private HashMap<Integer, Integer> productsOrdered;
+    public HashMap<Integer, Integer> productsOrdered;
     private int customerId;
     private double totalCost;
     private String status;

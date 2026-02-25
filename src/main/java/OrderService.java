@@ -58,20 +58,23 @@ public class OrderService {
     }
 
     public void getOrders(){
-        /* 
+        if (orders.size() == 0 ){
+            System.out.println("No orders created yet. Please create orders to view their history.");   
+        }
         for (Order order : orders) {
     
-            System.out.println("ID: " + order.getId());
-            System.out.println( " | Products: ");
+            System.out.println("Order ID: " + order.getId());
+            System.out.println( "Products Ordered: ");
 
-            for (Map.Entry<Integer, Integer> entry : order.productOrders.entrySet()) {
+            for (Map.Entry<Integer, Integer> entry : order.productsOrdered.entrySet()) {
                 int productId = entry.getKey();
-                System.out.print( productId);
+                Product product = inventoryManagement.getProductById(productId);
+                System.out.print( product.getProductName());
             }
 
-            System.out.println( " | Total Cost £" + order.getTotalCost());
-            System.out.println(" | Status: " + order.getStatus());
+            System.out.println( "\nTotal Cost £" + order.getTotalCost());
+            System.out.println("Status: " + order.getStatus());
 
-        }*/
+        }
     }
 }

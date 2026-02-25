@@ -213,16 +213,19 @@ public class App {
                     //getting customer id
                     System.out.println("Please insert your customer ID or make one up now:");
                     int user_id = scanner.nextInt();
+                    
                     //getting auto generated order id
-                    int user_order_id = orderProcessing.getNextOrderID();
+                    //int user_order_id = orderProcessing.getNextOrderID();
                     //allowing user to add as many products as they want
                     Boolean not_complete = true;
                     while (not_complete){
-                        System.out.println("Please add products to your order by entering the product id. When your order is complete, please type 'y.'");
-                        if (scanner.equals("y")){
+                        scanner.nextLine();
+                        System.out.println("Please add products to your order by entering the product id. If your order is complete, please type 'y.'");
+                        String input = scanner.nextLine();
+                        if (input.equalsIgnoreCase("y")){
                             not_complete = false;
                         } else {
-                            int user_product_id = scanner.nextInt();
+                            int user_product_id = Integer.parseInt(input);
                             System.out.println("What quantity would you like to buy? ");
                             int user_quantity = scanner.nextInt();
                             Product product = inventoryManagement.getProductById(user_product_id);
